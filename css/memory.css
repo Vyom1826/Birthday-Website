@@ -1,0 +1,1590 @@
+/*=========================================
+            GOOGLE FONT
+=========================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    width: 100%;
+    height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    font-family: 'Poppins', sans-serif;
+
+    background: #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+}
+
+/*=========================================
+            BACKGROUND
+=========================================*/
+
+body::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(circle at center,
+            rgba(255, 215, 100, .10),
+            transparent 55%);
+
+    z-index: -3;
+
+}
+
+body::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(to bottom,
+            rgba(255, 255, 255, .02),
+            transparent 35%);
+
+    z-index: -2;
+
+}
+
+/*=========================================
+        FLOATING GLASS MEMORIES
+=========================================*/
+
+.memory-bg {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -2;
+
+}
+
+.glass {
+
+    position: absolute;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, .03);
+
+    border: 1px solid rgba(255, 255, 255, .05);
+
+    backdrop-filter: blur(8px);
+
+    box-shadow:
+
+        inset 0 0 12px rgba(255, 255, 255, .03),
+
+        0 0 40px rgba(255, 255, 255, .02);
+
+    animation: floatMemory linear infinite;
+
+}
+
+.g1 {
+
+    width: 160px;
+    height: 110px;
+
+    left: 6%;
+    top: 12%;
+
+    animation-duration: 28s;
+
+    transform: rotate(-12deg);
+
+}
+
+.g2 {
+
+    width: 110px;
+    height: 150px;
+
+    right: 8%;
+    top: 18%;
+
+    animation-duration: 33s;
+
+    transform: rotate(9deg);
+
+}
+
+.g3 {
+
+    width: 180px;
+    height: 120px;
+
+    left: 18%;
+    bottom: 10%;
+
+    animation-duration: 31s;
+
+    transform: rotate(18deg);
+
+}
+
+.g4 {
+
+    width: 90px;
+    height: 90px;
+
+    right: 25%;
+    bottom: 18%;
+
+    animation-duration: 24s;
+
+    transform: rotate(-15deg);
+
+}
+
+.g5 {
+
+    width: 140px;
+    height: 100px;
+
+    left: 42%;
+    top: 8%;
+
+    animation-duration: 35s;
+
+    transform: rotate(5deg);
+
+}
+
+.g6 {
+
+    width: 120px;
+    height: 80px;
+
+    right: 42%;
+    bottom: 6%;
+
+    animation-duration: 27s;
+
+    transform: rotate(-6deg);
+
+}
+
+.g7 {
+
+    width: 100px;
+    height: 140px;
+
+    left: 72%;
+    top: 42%;
+
+    animation-duration: 30s;
+
+    transform: rotate(15deg);
+
+}
+
+.g8 {
+
+    width: 150px;
+    height: 100px;
+
+    left: 32%;
+    top: 60%;
+
+    animation-duration: 26s;
+
+    transform: rotate(-10deg);
+
+}
+
+@keyframes floatMemory {
+
+    0% {
+
+        transform: translateY(0) rotate(0deg);
+
+        opacity: .15;
+
+    }
+
+    25% {
+
+        opacity: .28;
+
+    }
+
+    50% {
+
+        transform: translateY(-35px) rotate(3deg);
+
+        opacity: .18;
+
+    }
+
+    75% {
+
+        opacity: .26;
+
+    }
+
+    100% {
+
+        transform: translateY(0) rotate(0deg);
+
+        opacity: .15;
+
+    }
+
+}
+
+/*=========================================
+            SPOTLIGHT
+=========================================*/
+
+.spotlight {
+
+    position: absolute;
+
+    width: 900px;
+    height: 900px;
+
+    top: -600px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(circle,
+            rgba(255, 228, 130, .22),
+            rgba(255, 228, 130, .06),
+            transparent 75%);
+
+    filter: blur(55px);
+
+    z-index: -1;
+
+}
+
+/*=========================================
+            MAIN CONTAINER
+=========================================*/
+
+.container {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+
+}
+
+/*=========================================
+            GLASS CARD
+=========================================*/
+
+.glass-card {
+
+    width: 1100px;
+
+    max-width: 92%;
+
+    padding: 55px;
+
+    border-radius: 30px;
+
+    background:
+
+        rgba(255, 255, 255, .06);
+
+    border:
+
+        1px solid rgba(255, 255, 255, .12);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+
+        0 25px 60px rgba(0, 0, 0, .45);
+
+    text-align: center;
+
+}
+
+.glass-card h1 {
+
+    color: #FFD86A;
+
+    font-size: 48px;
+
+    font-weight: 700;
+
+}
+
+.glass-card p {
+
+    margin-top: 18px;
+
+    color: #d8d8d8;
+
+    font-size: 18px;
+
+    line-height: 30px;
+
+}
+
+/*=========================================
+            MEMORY CARDS
+=========================================*/
+
+.cards {
+
+    margin-top: 60px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+
+}
+
+.memory-card {
+
+    flex: 1;
+
+    min-width: 250px;
+
+    height: 300px;
+
+    border-radius: 25px;
+
+    background:
+
+        rgba(255, 255, 255, .05);
+
+    border:
+
+        1px solid rgba(255, 255, 255, .10);
+
+    backdrop-filter: blur(15px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: .45s;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.memory-card:hover {
+
+    transform:
+
+        translateY(-12px) scale(1.03);
+
+    border-color:
+
+        rgba(255, 216, 106, .55);
+
+    box-shadow:
+
+        0 20px 45px rgba(255, 216, 106, .18);
+
+}
+
+/*=========================================
+                ICON
+=========================================*/
+
+.icon {
+
+    font-size: 80px;
+
+    transition: .45s;
+
+}
+
+.memory-card:hover .icon {
+
+    transform:
+
+        scale(1.12) rotate(-8deg);
+
+}
+
+.memory-card h2 {
+
+    color: white;
+
+    margin-top: 25px;
+
+    font-size: 28px;
+
+}
+
+.memory-card span {
+
+    color: #bfbfbf;
+
+    margin-top: 10px;
+
+    font-size: 16px;
+
+}
+
+/*=========================================
+            CSS CAMERA
+=========================================*/
+
+.camera {
+
+    position: relative;
+
+    width: 140px;
+
+    height: 110px;
+
+    transition: .45s;
+
+}
+
+.memory-card:hover .camera {
+
+    transform:
+
+        translateY(-6px) rotate(-3deg) scale(1.05);
+
+}
+
+/* Top Part */
+
+.camera-top {
+
+    position: absolute;
+
+    left: 15px;
+
+    top: 0;
+
+    width: 55px;
+
+    height: 18px;
+
+    border-radius: 8px 8px 0 0;
+
+    background: #3d3d3d;
+
+}
+
+/* Camera Body */
+
+.camera-body {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 140px;
+
+    height: 95px;
+
+    border-radius: 18px;
+
+    background:
+
+        linear-gradient(180deg,
+
+            #4d4d4d,
+
+            #252525);
+
+    box-shadow:
+
+        inset 0 2px 3px rgba(255, 255, 255, .15),
+
+        0 10px 20px rgba(0, 0, 0, .35);
+
+}
+
+/* Flash */
+
+.flash {
+
+    position: absolute;
+
+    width: 20px;
+
+    height: 15px;
+
+    background: #f8f8f8;
+
+    border-radius: 4px;
+
+    top: 15px;
+
+    left: 18px;
+
+}
+
+/* Main Lens */
+
+.lens {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 62px;
+
+    height: 62px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(circle,
+
+            #444,
+
+            #111);
+
+    border: 5px solid #666;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+/* Inner Lens */
+
+.lens-inner {
+
+    width: 28px;
+
+    height: 28px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(circle,
+
+            #7fd6ff,
+
+            #18486a,
+
+            #000);
+
+}
+
+/* Small Lens */
+
+.small-lens {
+
+    position: absolute;
+
+    width: 14px;
+
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #222;
+
+    right: 18px;
+
+    top: 18px;
+
+}
+
+/*=========================================
+            GIFT BOX
+=========================================*/
+
+.gift {
+
+    position: relative;
+
+    width: 120px;
+
+    height: 120px;
+
+    transition: .4s;
+
+}
+
+.memory-card:hover .gift {
+
+    transform:
+        translateY(-8px) rotate(-4deg) scale(1.05);
+
+}
+
+/*=========================
+        BOX
+=========================*/
+
+.gift-box {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 120px;
+
+    height: 82px;
+
+    border-radius: 0 0 14px 14px;
+
+    background: linear-gradient(180deg,
+            #ff6fa4,
+            #ff3b82);
+
+    box-shadow:
+
+        inset 0 3px 5px rgba(255, 255, 255, .3),
+
+        0 12px 22px rgba(0, 0, 0, .35);
+
+}
+
+/*=========================
+        LID
+=========================*/
+
+.gift-lid {
+
+    position: absolute;
+
+    top: 18px;
+
+    width: 128px;
+
+    height: 28px;
+
+    left: -4px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(180deg,
+
+            #ff83b3,
+
+            #ff4c8f);
+
+    box-shadow:
+
+        inset 0 2px 3px rgba(255, 255, 255, .4);
+
+}
+
+/*=========================
+        RIBBON
+=========================*/
+
+.vertical-ribbon {
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 14px;
+
+    height: 100%;
+
+    background: #ffd54d;
+
+}
+
+.horizontal-ribbon {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 100%;
+
+    height: 14px;
+
+    background: #ffd54d;
+
+}
+
+/*=========================
+        BOW
+=========================*/
+
+.bow {
+
+    position: absolute;
+
+    width: 22px;
+
+    height: 22px;
+
+    border: 6px solid #ffd54d;
+
+    border-radius: 50%;
+
+    top: -12px;
+
+}
+
+.bow-left {
+
+    left: 42px;
+
+    transform: rotate(-35deg);
+
+}
+
+.bow-right {
+
+    right: 42px;
+
+    transform: rotate(35deg);
+
+}
+
+/*=========================
+    HOVER EFFECT
+=========================*/
+
+.memory-card:hover .gift-lid {
+
+    animation: giftBounce .8s infinite alternate;
+
+}
+
+@keyframes giftBounce {
+
+    from {
+
+        transform: translateY(0);
+
+    }
+
+    to {
+
+        transform: translateY(-4px);
+
+    }
+
+}
+
+/*=========================================
+            ENVELOPE
+=========================================*/
+
+.envelope {
+
+    position: relative;
+
+    width: 140px;
+
+    height: 100px;
+
+    transition: .4s;
+
+}
+
+.memory-card:hover .envelope {
+
+    transform:
+        translateY(-8px) rotate(3deg) scale(1.05);
+
+}
+
+/*=========================
+        BACK
+=========================*/
+
+.envelope-back {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 140px;
+
+    height: 90px;
+
+    background: linear-gradient(180deg,
+            #fffdf8,
+            #ece6dd);
+
+    border-radius: 10px;
+
+    box-shadow:
+
+        inset 0 2px 3px rgba(255, 255, 255, .8),
+
+        0 12px 25px rgba(0, 0, 0, .25);
+
+}
+
+/*=========================
+        LETTER
+=========================*/
+
+.letter-paper {
+
+    position: absolute;
+
+    left: 10px;
+
+    bottom: 30px;
+
+    width: 120px;
+
+    height: 70px;
+
+    background: white;
+
+    border-radius: 6px;
+
+    transition: .4s;
+
+}
+
+.memory-card:hover .letter-paper {
+
+    bottom: 48px;
+
+}
+
+/*=========================
+        FLAP
+=========================*/
+
+.envelope-flap {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 140px;
+
+    height: 70px;
+
+    background: #f8f2ea;
+
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+
+    transform-origin: top;
+
+    transition: .4s;
+
+}
+
+.memory-card:hover .envelope-flap {
+
+    transform: rotateX(180deg);
+
+}
+
+/*=========================
+        SEAL
+=========================*/
+
+.seal {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    width: 24px;
+
+    height: 24px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(180deg,
+            #ff4b6e,
+            #c40032);
+
+    box-shadow:
+
+        0 0 12px rgba(255, 70, 120, .4);
+
+}
+
+.seal::before {
+
+    content: "❤";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: white;
+
+    font-size: 12px;
+
+}
+
+/*=========================================
+            COMPLETED CARD
+=========================================*/
+
+.completed {
+
+    border: 2px solid #FFD86A;
+
+    box-shadow:
+
+        0 0 30px rgba(255, 216, 106, .35);
+
+}
+
+.completed::after {
+
+    content: "✓ Completed";
+
+    position: absolute;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #FFD86A;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+}
+
+/*=========================================
+        FADE ANIMATION
+=========================================*/
+
+.glass-card.fade-out {
+
+    animation: fadeRoom 1.2s forwards;
+
+}
+
+@keyframes fadeRoom {
+
+    0% {
+
+        opacity: 1;
+        transform: scale(1);
+
+        filter: blur(0px);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform: scale(.92);
+
+        filter: blur(12px);
+
+    }
+
+}
+
+.memory-card.hide {
+
+    animation: hideCard .8s forwards;
+
+}
+
+@keyframes hideCard {
+
+    0% {
+
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform: translateY(60px) scale(.8);
+
+    }
+
+}
+
+.completed {
+
+    opacity: .6;
+
+    pointer-events: none;
+
+    filter: grayscale(.3);
+
+}
+
+.completed::after {
+
+    content: "✓ Completed";
+
+    position: absolute;
+
+    bottom: -35px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: #ff4d88;
+
+    color: white;
+
+    padding: 6px 14px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+.hideRoom {
+
+    opacity: 0;
+
+    transform: scale(.95);
+
+    pointer-events: none;
+
+    transition: 1s;
+
+}
+
+
+.cards.hide {
+
+    opacity: 0;
+
+    transform: scale(.9);
+
+    pointer-events: none;
+
+    transition: 1s;
+
+}
+
+/* =====================================
+        TABLET
+===================================== */
+
+@media (max-width:992px) {
+
+    .glass-card {
+
+        padding: 40px 30px;
+
+    }
+
+    .glass-card h1 {
+
+        font-size: 38px;
+
+    }
+
+    .cards {
+
+        justify-content: center;
+
+    }
+
+    .memory-card {
+
+        flex: 0 0 300px;
+
+    }
+
+}
+
+
+/* =====================================
+        MOBILE
+===================================== */
+
+@media (max-width:768px) {
+
+    body {
+
+        overflow-y: auto;
+
+        padding: 25px 15px;
+
+    }
+
+    .container {
+
+        padding: 15px;
+
+    }
+
+    .glass-card {
+
+        padding: 30px 20px;
+
+    }
+
+    .glass-card h1 {
+
+        font-size: 30px;
+
+    }
+
+    .glass-card p {
+
+        font-size: 16px;
+
+        line-height: 26px;
+
+    }
+
+    .cards {
+
+        margin-top: 35px;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 20px;
+
+    }
+
+    .memory-card {
+
+        width: 100%;
+
+        max-width: 330px;
+
+        min-width: unset;
+
+        height: 250px;
+
+    }
+
+}
+
+
+/* =====================================
+        SMALL MOBILE
+===================================== */
+
+@media (max-width:480px) {
+
+    .glass-card {
+
+        border-radius: 22px;
+
+    }
+
+    .glass-card h1 {
+
+        font-size: 26px;
+
+    }
+
+    .memory-card {
+
+        height: 220px;
+
+    }
+
+    .camera {
+
+        transform: scale(.85);
+
+    }
+
+    .gift {
+
+        transform: scale(.85);
+
+    }
+
+    .envelope {
+
+        transform: scale(.85);
+
+    }
+
+    .memory-card h2 {
+
+        font-size: 22px;
+
+    }
+
+    .memory-card span {
+
+        font-size: 14px;
+
+    }
+
+}
+
+/* =====================================
+        LARGE TABLETS (1024px)
+===================================== */
+
+@media (max-width:1024px) {
+
+    .glass-card {
+
+        width: 95%;
+        padding: 45px 35px;
+
+    }
+
+    .cards {
+
+        justify-content: center;
+        gap: 25px;
+
+    }
+
+    .memory-card {
+
+        flex: 0 0 280px;
+
+    }
+
+}
+
+/* =====================================
+        TABLETS (768px)
+===================================== */
+
+@media (max-width:768px) {
+
+    body {
+
+        display: block;
+        min-height: 100vh;
+        padding: 25px 15px;
+
+    }
+
+    .container {
+
+        width: 100%;
+        padding: 0;
+    }
+
+    .glass-card {
+
+        width: 100%;
+        max-width: 100%;
+        padding: 30px 20px;
+        border-radius: 24px;
+
+    }
+
+    .glass-card h1 {
+
+        font-size: 32px;
+
+    }
+
+    .glass-card p {
+
+        font-size: 16px;
+        line-height: 28px;
+
+    }
+
+    .cards {
+
+        margin-top: 35px;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 22px;
+
+    }
+
+    .memory-card {
+
+        width: 100%;
+        max-width: 340px;
+
+        min-width: unset;
+
+        height: 250px;
+
+    }
+
+}
+
+/* =====================================
+        430px (iPhone Pro Max)
+===================================== */
+
+@media (max-width:430px) {
+
+    .glass-card {
+
+        padding: 24px 18px;
+
+    }
+
+    .glass-card h1 {
+
+        font-size: 28px;
+
+    }
+
+    .glass-card p {
+
+        font-size: 15px;
+
+        line-height: 25px;
+
+    }
+
+    .memory-card {
+
+        max-width: 310px;
+
+        height: 230px;
+
+    }
+
+}
+
+/* =====================================
+        390px (iPhone 15)
+===================================== */
+
+@media (max-width:390px) {
+
+    .glass-card h1 {
+
+        font-size: 26px;
+
+    }
+
+    .memory-card {
+
+        max-width: 290px;
+
+        height: 220px;
+
+    }
+
+    .camera {
+
+        transform: scale(.82);
+
+    }
+
+    .gift {
+
+        transform: scale(.82);
+
+    }
+
+    .envelope {
+
+        transform: scale(.82);
+
+    }
+
+}
+
+/* =====================================
+        360px (Android)
+===================================== */
+
+@media (max-width:360px) {
+
+    body {
+
+        padding: 15px 10px;
+
+    }
+
+    .glass-card {
+
+        padding: 20px 15px;
+
+    }
+
+    .glass-card h1 {
+
+        font-size: 24px;
+
+    }
+
+    .glass-card p {
+
+        font-size: 14px;
+
+        line-height: 23px;
+
+    }
+
+    .memory-card {
+
+        max-width: 270px;
+
+        height: 210px;
+
+    }
+
+    .memory-card h2 {
+
+        font-size: 22px;
+
+    }
+
+    .memory-card span {
+
+        font-size: 13px;
+
+    }
+
+    .camera,
+    .gift,
+    .envelope {
+
+        transform: scale(.75);
+
+    }
+
+}
+
+/* =====================================
+        320px (Older Phones)
+===================================== */
+
+@media (max-width:320px) {
+
+    .glass-card {
+
+        padding: 18px 12px;
+
+    }
+
+    .glass-card h1 {
+
+        font-size: 22px;
+
+    }
+
+    .glass-card p {
+
+        font-size: 13px;
+
+        line-height: 22px;
+
+    }
+
+    .memory-card {
+
+        max-width: 240px;
+
+        height: 190px;
+
+    }
+
+    .camera,
+    .gift,
+    .envelope {
+
+        transform: scale(.68);
+
+    }
+
+    .memory-card h2 {
+
+        font-size: 20px;
+
+    }
+
+    .memory-card span {
+
+        font-size: 12px;
+
+    }
+
+}

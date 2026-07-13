@@ -1,0 +1,586 @@
+/*==================================
+            RESET
+==================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family: 'Poppins', sans-serif;
+
+    background: linear-gradient(135deg,
+            #fff7fb,
+            #ffe8f2,
+            #ffd9ea);
+
+}
+
+/*==================================
+        FLOATING BACKGROUND
+==================================*/
+
+#hearts,
+#sparkles {
+
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+}
+
+.heart,
+.sparkle {
+
+    position: absolute;
+
+    user-select: none;
+
+}
+
+/*==================================
+            CARD
+==================================*/
+
+.card {
+
+    position: relative;
+
+    width: 700px;
+
+    max-width: 90%;
+
+    padding: 60px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, .25);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, .4);
+
+    border-radius: 35px;
+
+    box-shadow:
+
+        0 25px 70px rgba(255, 70, 140, .18);
+
+    z-index: 10;
+
+    animation: floatCard 5s ease-in-out infinite;
+
+}
+
+@keyframes floatCard {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-10px);
+
+    }
+
+}
+
+/*==================================
+            TEXT
+==================================*/
+
+h1 {
+
+    font-family: 'Dancing Script', cursive;
+
+    font-size: 68px;
+
+    color: #ff4f97;
+
+    margin-bottom: 20px;
+
+}
+
+.subtitle {
+
+    font-size: 21px;
+
+    line-height: 1.8;
+
+    color: #666;
+
+    margin-bottom: 35px;
+
+}
+
+h2 {
+
+    font-size: 32px;
+
+    color: #ff5d97;
+
+    margin-bottom: 40px;
+
+}
+
+/*==================================
+          BUTTON AREA
+==================================*/
+
+.buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 30px;
+
+    margin-top: 20px;
+
+}
+
+/*==================================
+            BUTTONS
+==================================*/
+
+button {
+
+    width: 200px;
+
+    height: 70px;
+
+    border: none;
+
+    border-radius: 45px;
+
+    cursor: pointer;
+
+    font-size: 24px;
+
+    font-weight: 600;
+
+    transition: .35s;
+
+}
+
+#yesBtn {
+
+    background: linear-gradient(135deg,
+            #ff5d9e,
+            #ff2e7d);
+
+    color: white;
+
+    box-shadow:
+
+        0 15px 35px rgba(255, 90, 150, .35);
+
+}
+
+#yesBtn:hover {
+
+    transform:
+        translateY(-5px) scale(1.04);
+
+}
+
+#noBtn {
+
+    background: white;
+    color: #ff5d9e;
+
+    border: 3px solid #ff5d9e;
+
+    transition:
+        left .45s cubic-bezier(.25, .8, .25, 1),
+        top .45s cubic-bezier(.25, .8, .25, 1),
+        transform .45s ease;
+
+}
+
+/* Shake before escaping */
+
+@keyframes shake {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-6px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    60% {
+        transform: translateX(-5px);
+    }
+
+    80% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+
+}
+
+/*==================================
+        MESSAGE
+==================================*/
+
+#message {
+
+    margin-top: 35px;
+
+    min-height: 40px;
+
+    font-size: 24px;
+
+    color: #ff4f97;
+
+    font-weight: 600;
+
+}
+
+/*==================================
+        MOBILE
+==================================*/
+
+@media(max-width:768px) {
+
+    h1 {
+
+        font-size: 46px;
+
+    }
+
+    .subtitle {
+
+        font-size: 17px;
+
+    }
+
+    h2 {
+
+        font-size: 24px;
+
+    }
+
+    .buttons {
+
+        flex-direction: column;
+
+        gap: 20px;
+
+    }
+
+    button {
+
+        width: 230px;
+
+    }
+
+}
+
+/*==================================================
+                LARGE TABLETS
+==================================================*/
+
+@media (max-width:1024px) {
+
+    .card {
+
+        width: 90%;
+        padding: 50px;
+
+    }
+
+    h1 {
+
+        font-size: 58px;
+
+    }
+
+    .subtitle {
+
+        font-size: 19px;
+
+    }
+
+}
+
+/*==================================================
+                    TABLETS
+==================================================*/
+
+@media (max-width:768px) {
+
+    body {
+
+        align-items: flex-start;
+
+        padding: 30px 15px;
+
+    }
+
+    .card {
+
+        width: 100%;
+
+        padding: 40px 25px;
+
+        border-radius: 28px;
+
+    }
+
+    h1 {
+
+        font-size: 46px;
+
+    }
+
+    .subtitle {
+
+        font-size: 17px;
+
+        line-height: 1.7;
+
+    }
+
+    h2 {
+
+        font-size: 24px;
+
+    }
+
+    .buttons {
+
+        flex-direction: column;
+
+        gap: 18px;
+
+    }
+
+    button {
+
+        width: 230px;
+
+        height: 62px;
+
+        font-size: 20px;
+
+    }
+
+}
+
+/*==================================================
+                LARGE PHONES
+==================================================*/
+
+@media (max-width:430px) {
+
+    .card {
+
+        padding: 32px 20px;
+
+    }
+
+    h1 {
+
+        font-size: 38px;
+
+    }
+
+    .subtitle {
+
+        font-size: 15px;
+
+    }
+
+    h2 {
+
+        font-size: 21px;
+
+    }
+
+    button {
+
+        width: 210px;
+
+        height: 58px;
+
+        font-size: 18px;
+
+    }
+
+    #message {
+
+        font-size: 20px;
+
+    }
+
+}
+
+/*==================================================
+                iPHONE / PIXEL
+==================================================*/
+
+@media (max-width:390px) {
+
+    h1 {
+
+        font-size: 34px;
+
+    }
+
+    .subtitle {
+
+        font-size: 14px;
+
+    }
+
+    h2 {
+
+        font-size: 19px;
+
+    }
+
+    button {
+
+        width: 200px;
+
+        height: 56px;
+
+        font-size: 17px;
+
+    }
+
+}
+
+/*==================================================
+                    ANDROID
+==================================================*/
+
+@media (max-width:360px) {
+
+    .card {
+
+        padding: 26px 16px;
+
+    }
+
+    h1 {
+
+        font-size: 30px;
+
+    }
+
+    .subtitle {
+
+        font-size: 13px;
+
+        line-height: 1.6;
+
+    }
+
+    h2 {
+
+        font-size: 18px;
+
+    }
+
+    button {
+
+        width: 185px;
+
+        height: 54px;
+
+        font-size: 16px;
+
+    }
+
+    #message {
+
+        font-size: 18px;
+
+    }
+
+}
+
+/*==================================================
+                SMALL PHONES
+==================================================*/
+
+@media (max-width:320px) {
+
+    .card {
+
+        padding: 22px 14px;
+
+    }
+
+    h1 {
+
+        font-size: 26px;
+
+    }
+
+    .subtitle {
+
+        font-size: 12px;
+
+    }
+
+    h2 {
+
+        font-size: 16px;
+
+    }
+
+    button {
+
+        width: 170px;
+
+        height: 50px;
+
+        font-size: 15px;
+
+    }
+
+    #message {
+
+        font-size: 16px;
+
+    }
+
+}

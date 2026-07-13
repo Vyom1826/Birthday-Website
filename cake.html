@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mahi ❤️</title>
+    <link rel="stylesheet" href="css/cake.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="string-lights"></div>
+    <div class="spotlight"></div>
+    <div class="ambient-glow"></div>
+
+    <canvas id="canvas"></canvas>
+
+    <div class="balloon-cluster cluster-left">
+        <div class="balloon balloon-gold"></div>
+        <div class="balloon balloon-black"></div>
+        <div class="balloon balloon-white"></div>
+        <div class="string"></div>
+    </div>
+    <div class="balloon-cluster cluster-right">
+        <div class="balloon balloon-white"></div>
+        <div class="balloon balloon-gold"></div>
+        <div class="balloon balloon-black"></div>
+        <div class="string"></div>
+    </div>
+
+    <div class="container">
+        <header class="greetings">
+            <h1 class="title">Happy Birthday Mahi <span class="heart-pulse">❤️</span></h1>
+            <p class="subtitle" id="subtitle">Let's celebrate your special day!</p>
+        </header>
+
+        <div class="stage">
+            <div class="cake-container" id="cakeContainer">
+
+                <div class="candles-row">
+                    <div class="candle-wrapper" id="candle-1">
+                        <div class="flame lit"></div>
+                        <div class="candle gold-solid"></div>
+                    </div>
+                    <div class="candle-wrapper" id="candle-2">
+                        <div class="flame lit"></div>
+                        <div class="candle gold-solid"></div>
+                    </div>
+                    <div class="candle-wrapper" id="candle-3">
+                        <div class="flame lit"></div>
+                        <div class="candle gold-solid"></div>
+                    </div>
+                    <div class="candle-wrapper" id="candle-4">
+                        <div class="flame lit"></div>
+                        <div class="candle gold-solid"></div>
+                    </div>
+                    <div class="candle-wrapper" id="candle-5">
+                        <div class="flame lit"></div>
+                        <div class="candle gold-solid"></div>
+                    </div>
+                </div>
+
+                <div class="cake-split-wrapper" id="cakeSplitWrapper">
+
+                    <div class="cake-half left-half">
+                        <div class="css-cake">
+                            <div class="tier tier-top animate-drop-3">
+                                <div class="cylinder-shading"></div>
+                                <div class="dripping-icing gold-drip"></div>
+                                <div class="piped-frosting"><span></span><span></span><span></span><span></span></div>
+                            </div>
+                            <div class="tier tier-middle animate-drop-2">
+                                <div class="cylinder-shading"></div>
+                                <div class="dripping-icing black-drip"></div>
+                                <div class="piped-frosting">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                            <div class="tier tier-bottom animate-drop-1">
+                                <div class="cylinder-shading"></div>
+                                <div class="dripping-icing gold-drip"></div>
+                                <div class="piped-frosting">
+                                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hidden-heart" id="hiddenHeart">❤️</div>
+
+                    <div class="cake-half right-half">
+                        <div class="css-cake">
+                            <div class="tier tier-top animate-drop-3">
+                                <div class="cylinder-shading"></div>
+                                <div class="dripping-icing gold-drip"></div>
+                                <div class="piped-frosting"><span></span><span></span><span></span><span></span></div>
+                            </div>
+                            <div class="tier tier-middle animate-drop-2">
+                                <div class="cylinder-shading"></div>
+                                <div class="dripping-icing black-drip"></div>
+                                <div class="piped-frosting">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                            <div class="tier tier-bottom animate-drop-1">
+                                <div class="cylinder-shading"></div>
+                                <div class="dripping-icing gold-drip"></div>
+                                <div class="piped-frosting">
+                                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="plate" id="plate"></div>
+            </div>
+
+            <div class="knife" id="knife"></div>
+        </div>
+
+        <footer class="controls">
+            <button id="btnBlow" class="btn btn-blow hidden"><span>🕯️</span> BLOW OUT CANDLES</button>
+            <button id="btnCut" class="btn btn-cut hidden"><span>🔪</span> CUT THE CAKE</button>
+            <button id="btnContinue" class="btn btn-continue hidden"><span>🎁</span> CONTINUE ➔</button>
+        </footer>
+    </div>
+
+    <script src="js/cake.js"></script>
+</body>
+
+</html>

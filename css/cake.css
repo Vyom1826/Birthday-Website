@@ -1,0 +1,985 @@
+/* --- Base Layout & Background Settings --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0c0a08;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1500px;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.container {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 92vh;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* --- 💡 Backdrop Dynamic Spotlights --- */
+.string-lights {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background: radial-gradient(circle, rgba(255, 225, 140, 0.35) 0%, transparent 12%) repeat-x;
+    background-size: 80px 60px;
+    filter: drop-shadow(0 0 15px rgba(230, 180, 80, 0.6));
+}
+
+.spotlight {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    height: 120vh;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 233, 191, 0.2) 0%, rgba(0, 0, 0, 0) 75%);
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+.greetings {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out 0.3s forwards;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.6rem;
+    font-weight: 400;
+    color: #f6e3b4;
+    text-shadow: 0 0 25px rgba(212, 175, 55, 0.4), 0 4px 10px rgba(0, 0, 0, 0.85);
+}
+
+.heart-pulse {
+    display: inline-block;
+    color: #d4af37;
+    filter: drop-shadow(0 0 12px #d4af37);
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    letter-spacing: 2.5px;
+    color: #cccccc;
+    margin-top: -3px;
+}
+
+/* --- 🎈 Floating Premium Balloon Clusters --- */
+.balloon-cluster {
+    position: absolute;
+    bottom: 25%;
+    width: 140px;
+    height: 200px;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(100px);
+    animation: balloonFloatIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards,
+        ambientSway 4s ease-in-out infinite alternate 3.7s;
+}
+
+.cluster-left {
+    left: 8%;
+}
+
+.cluster-right {
+    right: 8%;
+}
+
+.balloon {
+    position: absolute;
+    width: 75px;
+    height: 90px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    box-shadow: inset -6px -10px 15px rgba(0, 0, 0, 0.4), 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+.balloon-gold {
+    background: linear-gradient(135deg, #fff3cc 0%, #d4af37 50%, #8a6d1c 100%);
+    top: 10px;
+    left: 10px;
+}
+
+.balloon-gold::after {
+    border-bottom: 7px solid #8a6d1c;
+}
+
+.balloon-black {
+    background: linear-gradient(135deg, #555555 0%, #1a1a1a 60%, #000000 100%);
+    top: -25px;
+    left: 45px;
+}
+
+.balloon-black::after {
+    border-bottom: 7px solid #1a1a1a;
+}
+
+.balloon-white {
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 60%, #b0b0b0 100%);
+    top: 35px;
+    left: 55px;
+}
+
+.balloon-white::after {
+    border-bottom: 7px solid #b0b0b0;
+}
+
+.string {
+    position: absolute;
+    width: 2px;
+    height: 220px;
+    background: rgba(255, 255, 255, 0.15);
+    bottom: -130px;
+    left: 50%;
+}
+
+/* --- 🥣 Luxury Marble Plate --- */
+.stage {
+    position: relative;
+    width: 100%;
+    height: 540px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.cake-container {
+    position: relative;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plate {
+    width: 490px;
+    height: 35px;
+    background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 35%, #eaeaea 70%, #c0c0c0 100%);
+    border-radius: 50%;
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.9),
+        inset 0 -10px 15px rgba(0, 0, 0, 0.3),
+        inset 0 4px 6px #fff;
+    transform: translateY(300px);
+    opacity: 0;
+    animation: plateRise 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    z-index: 5;
+    border-bottom: 5px solid #bd9b4c;
+}
+
+/* --- 🎂 Staggered Falling Framework --- */
+.cake-split-wrapper {
+    position: relative;
+    width: 500px;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: -8px;
+    z-index: 6;
+}
+
+.cake-half {
+    width: 250px;
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.left-half {
+    transform-origin: right center;
+}
+
+.right-half {
+    transform-origin: left center;
+}
+
+/* 3D Slicing Open Openings */
+.cake-split-wrapper.split .left-half {
+    transform: translateX(-125px) rotateY(-22deg);
+    filter: drop-shadow(-20px 20px 30px rgba(0, 0, 0, 0.75));
+}
+
+.cake-split-wrapper.split .right-half {
+    transform: translateX(125px) rotateY(22deg);
+    filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.75));
+}
+
+
+/* --- 🍰 The Patisserie White, Gold & Black CSS Cake --- */
+.css-cake {
+    position: absolute;
+    top: 0;
+    width: 500px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.left-half .css-cake {
+    left: 0;
+}
+
+.right-half .css-cake {
+    left: -250px;
+}
+
+.tier {
+    position: relative;
+    background: linear-gradient(to right, #e8e8e8, #ffffff, #fdfdfd, #e0e0e0);
+    border-radius: 14px 14px 4px 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-900px);
+}
+
+/* --- 🎬 Layer-by-Layer Assembly Sequence Line --- */
+.animate-drop-1 {
+    animation: dropLayer 0.95s cubic-bezier(0.175, 0.885, 0.32, 1.15) 0.4s forwards;
+    z-index: 7;
+}
+
+.animate-drop-2 {
+    animation: dropLayer 0.95s cubic-bezier(0.175, 0.885, 0.32, 1.15) 1.1s forwards;
+    z-index: 8;
+    margin-bottom: -5px;
+}
+
+.animate-drop-3 {
+    animation: dropLayer 0.95s cubic-bezier(0.175, 0.885, 0.32, 1.15) 1.8s forwards;
+    z-index: 9;
+    margin-bottom: -5px;
+}
+
+/* Tier Blueprints */
+.tier-top {
+    width: 195px;
+    height: 95px;
+}
+
+.tier-middle {
+    width: 300px;
+    height: 110px;
+}
+
+.tier-bottom {
+    width: 405px;
+    height: 125px;
+}
+
+/* 3D Realism Cylinder Overlay */
+.cylinder-shading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.22) 0%, transparent 20%, transparent 80%, rgba(0, 0, 0, 0.32) 100%);
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* --- 🧁 Luxury Frosting Drips Styling --- */
+.dripping-icing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 32px;
+    z-index: 2;
+}
+
+/* Metallic Liquid Gold Definition */
+.gold-drip {
+    background: linear-gradient(to right, #9e782f, #dfba6b, #f5e4a9, #dfba6b, #9e782f);
+    background-image: radial-gradient(circle at 12px 28px, #dfba6b 11px, transparent 12px);
+    background-size: 24px 40px;
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.35));
+}
+
+/* Glossy Deep Black Definition */
+.black-drip {
+    background: linear-gradient(to right, #111111, #2d2d2d, #3d3d3d, #2d2d2d, #111111);
+    background-image: radial-gradient(circle at 13px 26px, #2d2d2d 12px, transparent 13px);
+    background-size: 26px 38px;
+    filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* --- 🍧 Royal Piped Meringue Swirls Bases --- */
+.piped-frosting {
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 8px;
+    z-index: 3;
+}
+
+.piped-frosting span {
+    width: 25px;
+    height: 16px;
+    background: radial-gradient(circle at 50% 25%, #ffffff 0%, #eaeaea 75%, #d1d1d1 100%);
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    display: inline-block;
+}
+
+/* Bottom Tier features matching gold frosted piping base */
+.tier-bottom .piped-frosting span {
+    background: radial-gradient(circle at 50% 25%, #f6e1a4 0%, #d4af37 75%, #96751c 100%);
+}
+
+/* --- 🕯️ Luxury Gold Metallic Candles --- */
+.candles-row {
+    position: absolute;
+    bottom: 310px;
+    width: 140px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 12;
+    transition: opacity 0.5s, transform 1s;
+}
+
+.candle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 16px;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+}
+
+/* Pop out after top tier falls completely */
+#candle-1 {
+    animation: growCandle 0.4s ease-out 2.6s forwards;
+}
+
+#candle-2 {
+    animation: growCandle 0.4s ease-out 2.7s forwards;
+}
+
+#candle-3 {
+    animation: growCandle 0.4s ease-out 2.8s forwards;
+}
+
+#candle-4 {
+    animation: growCandle 0.4s ease-out 2.9s forwards;
+}
+
+#candle-5 {
+    animation: growCandle 0.4s ease-out 3.0s forwards;
+}
+
+.candle {
+    width: 8px;
+    height: 56px;
+    border-radius: 3px 3px 0 0;
+    box-shadow: inset 1px 0 3px rgba(255, 255, 255, 0.4), 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.gold-solid {
+    background: linear-gradient(to right, #a17c24, #edd28c, #a17c24);
+}
+
+.flame {
+    width: 14px;
+    height: 25px;
+    background: radial-gradient(circle at 50% 80%, #ffffff 15%, #fff1bd 45%, #ff8c00 85%, transparent 100%);
+    border-radius: 50% 50% 25% 25%;
+    margin-bottom: 3px;
+    box-shadow: 0 0 20px rgba(255, 150, 20, 0.95), 0 0 40px rgba(255, 100, 0, 0.5);
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: bottom center;
+}
+
+.flame.lit {
+    animation: ignite 0.4s ease-out 3.3s forwards, flicker 0.1s ease-in-out infinite alternate;
+}
+
+/* --- 🔪 Knife Mechanics --- */
+.knife {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 260px;
+    background: linear-gradient(to bottom, transparent 0%, #ffffff 45%, #dceefc 100%);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.85);
+    opacity: 0;
+    transform: translate(-50%, -300px);
+    z-index: 20;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    pointer-events: none;
+}
+
+.knife.slice-action {
+    opacity: 1;
+    transform: translate(-50%, 95px);
+}
+
+.hidden-heart {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 5rem;
+    z-index: 4;
+    color: #ff235d;
+    text-shadow: 0 0 35px #ff235d, 0 0 70px #ff235d;
+    opacity: 0;
+    transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s, opacity 0.4s ease 0.35s;
+}
+
+.hidden-heart.reveal {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    animation: beat 0.7s infinite alternate 1.2s;
+}
+
+/* --- 🕹️ Control Interface --- */
+.controls {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 90%;
+}
+
+.btn {
+    border: none;
+    padding: 16px 36px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-blow {
+    background: linear-gradient(135deg, #d32f2f 0%, #9a0007 100%);
+    color: white;
+}
+
+.btn-blow:hover {
+    box-shadow: 0 0 25px rgba(211, 47, 47, 0.7);
+    transform: translateY(-2px);
+}
+
+.btn-cut {
+    background: linear-gradient(135deg, #455a64 0%, #1c313a 100%);
+    color: white;
+}
+
+.btn-cut:hover {
+    box-shadow: 0 0 25px rgba(69, 90, 100, 0.7);
+    transform: translateY(-2px);
+}
+
+.btn-continue {
+    background: linear-gradient(135deg, #b5943a 0%, #7d621f 100%);
+    color: white;
+}
+
+.btn-continue:hover {
+    box-shadow: 0 0 25px rgba(181, 148, 58, 0.7);
+    transform: translateY(-2px);
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+/* --- Keyframe Automations --- */
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes plateRise {
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes growCandle {
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+@keyframes ignite {
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes dropLayer {
+    0% {
+        transform: translateY(-900px) scaleY(1.35);
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    82% {
+        transform: translateY(6px) scaleY(0.88);
+    }
+
+    100% {
+        transform: translateY(0) scaleY(1);
+        opacity: 1;
+    }
+}
+
+@keyframes balloonFloatIn {
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes ambientSway {
+    0% {
+        transform: translate(0, 0) rotate(-1deg);
+    }
+
+    100% {
+        transform: translate(4px, -12px) rotate(2deg);
+    }
+}
+
+@keyframes flicker {
+    0% {
+        transform: scale(1) rotate(-1deg);
+    }
+
+    100% {
+        transform: scale(1.04) rotate(1deg);
+        filter: brightness(1.15);
+    }
+}
+
+@keyframes beat {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.18);
+    }
+}
+
+/* --- 🕯️ Realistic Candle Blowout Animations --- */
+.flame.extinguishing {
+    animation: blowOutAnimation 0.25s cubic-bezier(0.11, 0, 0.5, 0) forwards !important;
+}
+
+@keyframes blowOutAnimation {
+    0% {
+        transform: scale(1) skewX(0deg);
+        opacity: 1;
+        filter: brightness(1.3);
+    }
+
+    40% {
+        transform: scale(0.7, 1.3) skewX(25deg) translateX(-4px);
+        opacity: 0.8;
+    }
+
+    80% {
+        transform: scale(0.3, 0.8) skewX(45deg) translateX(-8px);
+        opacity: 0.3;
+        filter: brightness(0.8);
+    }
+
+    100% {
+        transform: scale(0) skewX(60deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatUp {
+
+    0% {
+
+        transform:
+
+            translateY(0) rotate(0deg);
+
+    }
+
+    100% {
+
+        transform:
+
+            translateY(-120vh) rotate(360deg);
+
+    }
+
+}
+
+/*==================================================
+                LARGE TABLETS
+==================================================*/
+
+@media (max-width:1024px) {
+
+    .container {
+
+        max-width: 700px;
+
+    }
+
+    .title {
+
+        font-size: 4rem;
+
+    }
+
+    .stage {
+
+        transform: scale(.90);
+
+    }
+
+    .balloon-cluster {
+
+        transform: scale(.85);
+
+    }
+
+}
+
+
+/*==================================================
+                    TABLETS
+==================================================*/
+
+@media (max-width:768px) {
+
+    body {
+
+        overflow-y: auto;
+
+        overflow-x: hidden;
+
+    }
+
+    .container {
+
+        height: auto;
+
+        min-height: 100vh;
+
+        padding: 30px 0 50px;
+
+    }
+
+    .title {
+
+        font-size: 3.2rem;
+
+    }
+
+    .subtitle {
+
+        font-size: .9rem;
+
+    }
+
+    .stage {
+
+        height: 470px;
+
+        transform: scale(.75);
+
+    }
+
+    .balloon-cluster {
+
+        transform: scale(.70);
+
+    }
+
+    .cluster-left {
+
+        left: -20px;
+
+    }
+
+    .cluster-right {
+
+        right: -20px;
+
+    }
+
+    .controls {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 15px;
+
+    }
+
+    .btn {
+
+        width: 260px;
+
+        justify-content: center;
+
+    }
+
+}
+
+
+/*==================================================
+                LARGE PHONES
+==================================================*/
+
+@media (max-width:430px) {
+
+    .title {
+
+        font-size: 2.7rem;
+
+    }
+
+    .subtitle {
+
+        font-size: .82rem;
+
+        letter-spacing: 1.5px;
+
+    }
+
+    .stage {
+
+        height: 410px;
+
+        transform: scale(.63);
+
+    }
+
+    .balloon-cluster {
+
+        transform: scale(.58);
+
+    }
+
+    .cluster-left {
+
+        left: -45px;
+
+    }
+
+    .cluster-right {
+
+        right: -45px;
+
+    }
+
+    .btn {
+
+        width: 240px;
+
+        padding: 15px 20px;
+
+        font-size: .85rem;
+
+    }
+
+}
+
+
+/*==================================================
+                iPHONE / PIXEL
+==================================================*/
+
+@media (max-width:390px) {
+
+    .title {
+
+        font-size: 2.45rem;
+
+    }
+
+    .stage {
+
+        height: 380px;
+
+        transform: scale(.58);
+
+    }
+
+    .balloon-cluster {
+
+        display: none;
+
+    }
+
+    .btn {
+
+        width: 225px;
+
+        font-size: .82rem;
+
+    }
+
+    .hidden-heart {
+
+        font-size: 4rem;
+
+    }
+
+}
+
+
+/*==================================================
+                    ANDROID
+==================================================*/
+
+@media (max-width:360px) {
+
+    .container {
+
+        padding-top: 20px;
+
+    }
+
+    .title {
+
+        font-size: 2.2rem;
+
+    }
+
+    .subtitle {
+
+        font-size: .75rem;
+
+    }
+
+    .stage {
+
+        height: 350px;
+
+        transform: scale(.53);
+
+    }
+
+    .btn {
+
+        width: 210px;
+
+        padding: 14px 18px;
+
+        font-size: .8rem;
+
+    }
+
+    .controls {
+
+        margin-bottom: 25px;
+
+    }
+
+}
+
+
+/*==================================================
+                SMALL PHONES
+==================================================*/
+
+@media (max-width:320px) {
+
+    .title {
+
+        font-size: 2rem;
+
+    }
+
+    .subtitle {
+
+        font-size: .68rem;
+
+        letter-spacing: 1px;
+
+    }
+
+    .stage {
+
+        height: 310px;
+
+        transform: scale(.46);
+
+    }
+
+    .btn {
+
+        width: 190px;
+
+        padding: 12px 16px;
+
+        font-size: .75rem;
+
+    }
+
+    .hidden-heart {
+
+        font-size: 3.3rem;
+
+    }
+
+}

@@ -1,0 +1,763 @@
+/*====================================
+            RESET
+=====================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+    background: #FFE8F1;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    overflow-y: auto;
+
+}
+
+/*====================================
+        BACKGROUND
+=====================================*/
+
+.background {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(circle at top, #ffffff, #ffe8f1 45%, #ffdbe8);
+
+    z-index: -5;
+
+}
+
+/*====================================
+        CONTAINER
+=====================================*/
+
+.container {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 80px 20px;
+
+}
+
+/*====================================
+            ENVELOPE
+=====================================*/
+
+.envelope {
+
+    position: relative;
+
+    width: 420px;
+
+    height: 280px;
+
+    margin-top: 30px;
+
+}
+
+/*======================
+    BACK
+======================*/
+
+.envelope-back {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 220px;
+
+    background: linear-gradient(to bottom,
+
+            #ffffff,
+
+            #f7edf0);
+
+    border-radius: 12px;
+
+    box-shadow:
+
+        0 25px 45px rgba(0, 0, 0, .18);
+
+}
+
+/*======================
+        FLAP
+======================*/
+
+.flap {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 150px;
+
+    background: #ffd1df;
+
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+    transform-origin: top;
+
+    transition: 1s;
+
+    z-index: 8;
+
+}
+
+/*======================
+    LETTER
+======================*/
+
+.letter-preview {
+
+    position: absolute;
+
+    left: 25px;
+
+    bottom: 60px;
+
+    width: 370px;
+
+    height: 190px;
+
+    background: #fffdf7;
+
+    border-radius: 8px;
+
+    box-shadow:
+
+        inset 0 0 20px rgba(0, 0, 0, .05);
+
+    transition: 1s;
+
+}
+
+/* Fake Text */
+
+.letter-preview::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 30px;
+
+    top: 30px;
+
+    width: 300px;
+
+    height: 2px;
+
+    background: #e9e9e9;
+
+    box-shadow:
+
+        0 30px #e9e9e9,
+
+        0 60px #e9e9e9,
+
+        0 90px #e9e9e9,
+
+        0 120px #e9e9e9;
+
+}
+
+/*======================
+        WAX
+======================*/
+
+.wax {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 110px;
+
+    transform: translateX(-50%);
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(circle at top,
+
+            #ff81ab,
+
+            #d81b60);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: white;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    box-shadow:
+
+        0 10px 25px rgba(216, 27, 96, .35);
+
+    transition: .4s;
+
+}
+
+.wax:hover {
+
+    transform:
+
+        translateX(-50%) scale(1.08);
+
+}
+
+/*======================
+        HINT
+======================*/
+
+.hint {
+
+    margin-top: 40px;
+
+    color: #b84d72;
+
+    font-size: 20px;
+
+    font-weight: 500;
+
+    animation: pulse 2s infinite;
+
+}
+
+@keyframes pulse {
+
+    50% {
+
+        opacity: .45;
+
+    }
+
+}
+
+/*====================================
+            DIARY
+=====================================*/
+
+.diary {
+
+    display: none;
+
+    width: 100%;
+
+    margin-top: 80px;
+
+}
+
+.paper {
+
+    position: relative;
+
+    width: min(850px, 95%);
+
+    margin: auto;
+
+    background: linear-gradient(#fffef8,
+
+            #fff7ec);
+
+    border-radius: 18px;
+
+    padding: 70px;
+
+    box-shadow:
+
+        0 30px 70px rgba(0, 0, 0, .2);
+
+    overflow: hidden;
+
+}
+
+.paper::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        repeating-linear-gradient(transparent,
+
+            transparent 34px,
+
+            rgba(0, 0, 0, .03) 35px);
+
+}
+
+.paper::before {
+    pointer-events: none;
+}
+
+.paper>* {
+    position: relative;
+    z-index: 2;
+}
+
+.bookmark {
+
+    position: absolute;
+
+    right: 70px;
+
+    top: 0;
+
+    width: 25px;
+
+    height: 90px;
+
+    background: #ff4d88;
+
+}
+
+.bookmark::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -15px;
+
+    left: 0;
+
+    border-left: 12.5px solid transparent;
+
+    border-right: 12.5px solid transparent;
+
+    border-top: 15px solid #ff4d88;
+
+}
+
+.paper h1 {
+
+    font-family: 'Dancing Script', cursive;
+
+    font-size: 60px;
+
+    color: #d6336c;
+
+    margin-bottom: 40px;
+
+}
+
+#typing {
+
+    font-family: 'Caveat', cursive;
+
+    font-size: 34px;
+
+    line-height: 1.8;
+
+    color: #555;
+
+    white-space: pre-wrap;
+
+}
+
+#signature {
+
+    display: none;
+
+    margin-top: 50px;
+
+    text-align: right;
+
+    font-family: 'Dancing Script', cursive;
+
+    font-size: 42px;
+
+    color: #d6336c;
+
+}
+
+#signature span {
+
+    font-size: 52px;
+
+}
+
+#continueBtn {
+
+    display: none;
+
+    margin: 50px auto 0;
+
+    padding: 16px 42px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: #ff4d88;
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    z-index: 100;
+
+}
+
+#continueBtn:hover {
+
+    transform: translateY(-3px);
+
+}
+
+/*====================================
+        CORNERS
+=====================================*/
+
+.corner {
+
+    position: absolute;
+
+    font-size: 34px;
+
+}
+
+.tl {
+    top: 15px;
+    left: 18px;
+}
+
+.tr {
+    top: 15px;
+    right: 18px;
+}
+
+.bl {
+    bottom: 15px;
+    left: 18px;
+}
+
+.br {
+    bottom: 15px;
+    right: 18px;
+}
+
+/*====================================
+        LARGE TABLETS
+=====================================*/
+
+@media (max-width:1024px) {
+
+    .paper {
+        width: 92%;
+        padding: 60px;
+    }
+
+    .paper h1 {
+        font-size: 52px;
+    }
+
+    #typing {
+        font-size: 30px;
+    }
+
+}
+
+/*====================================
+            TABLETS
+=====================================*/
+
+@media (max-width:768px) {
+
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .container {
+        padding: 50px 15px;
+    }
+
+    .envelope {
+        width: 340px;
+        height: 230px;
+    }
+
+    .envelope-back {
+        height: 180px;
+    }
+
+    .flap {
+        height: 120px;
+    }
+
+    .letter-preview {
+        width: 295px;
+        height: 160px;
+        left: 22px;
+        bottom: 50px;
+    }
+
+    .letter-preview::before {
+        width: 235px;
+    }
+
+    .wax {
+        width: 58px;
+        height: 58px;
+        font-size: 22px;
+    }
+
+    .hint {
+        font-size: 18px;
+    }
+
+    .paper {
+        width: 100%;
+        padding: 45px 30px;
+    }
+
+    .paper h1 {
+        font-size: 46px;
+    }
+
+    #typing {
+        font-size: 26px;
+        line-height: 1.7;
+    }
+
+    #signature {
+        font-size: 34px;
+    }
+
+    #signature span {
+        font-size: 42px;
+    }
+
+}
+
+/*====================================
+        LARGE PHONES
+=====================================*/
+
+@media (max-width:430px) {
+
+    .envelope {
+        width: 300px;
+        height: 205px;
+    }
+
+    .envelope-back {
+        height: 160px;
+    }
+
+    .flap {
+        height: 105px;
+    }
+
+    .letter-preview {
+        width: 260px;
+        height: 145px;
+        left: 20px;
+    }
+
+    .letter-preview::before {
+        width: 200px;
+    }
+
+    .paper {
+        padding: 35px 22px;
+    }
+
+    .paper h1 {
+        font-size: 38px;
+    }
+
+    #typing {
+        font-size: 22px;
+        line-height: 1.6;
+    }
+
+    #signature {
+        font-size: 30px;
+    }
+
+    #signature span {
+        font-size: 38px;
+    }
+
+    #continueBtn {
+        width: 100%;
+        max-width: 260px;
+        font-size: 18px;
+    }
+
+}
+
+/*====================================
+        IPHONE / PIXEL
+=====================================*/
+
+@media (max-width:390px) {
+
+    .container {
+        padding: 35px 10px;
+    }
+
+    .envelope {
+        transform: scale(.9);
+    }
+
+    .paper {
+        padding: 30px 18px;
+    }
+
+    .paper h1 {
+        font-size: 34px;
+    }
+
+    #typing {
+        font-size: 20px;
+        line-height: 1.6;
+    }
+
+    #signature {
+        font-size: 28px;
+    }
+
+    #signature span {
+        font-size: 36px;
+    }
+
+}
+
+/*====================================
+        ANDROID
+=====================================*/
+
+@media (max-width:360px) {
+
+    .envelope {
+        transform: scale(.82);
+    }
+
+    .hint {
+        font-size: 16px;
+    }
+
+    .paper {
+        padding: 25px 16px;
+    }
+
+    .paper h1 {
+        font-size: 30px;
+    }
+
+    #typing {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    #signature {
+        font-size: 25px;
+    }
+
+    #signature span {
+        font-size: 32px;
+    }
+
+    #continueBtn {
+        width: 100%;
+        max-width: 240px;
+        padding: 14px 20px;
+        font-size: 17px;
+    }
+
+}
+
+/*====================================
+        SMALL PHONES
+=====================================*/
+
+@media (max-width:320px) {
+
+    .envelope {
+        transform: scale(.72);
+    }
+
+    .paper {
+        padding: 20px 14px;
+    }
+
+    .paper h1 {
+        font-size: 26px;
+    }
+
+    #typing {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    #signature {
+        font-size: 22px;
+    }
+
+    #signature span {
+        font-size: 28px;
+    }
+
+    .hint {
+        font-size: 15px;
+    }
+
+    #continueBtn {
+        width: 100%;
+        max-width: 220px;
+        padding: 12px 18px;
+        font-size: 16px;
+    }
+
+}

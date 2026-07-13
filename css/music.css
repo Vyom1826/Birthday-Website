@@ -1,0 +1,1460 @@
+/*=====================================================
+                    RESET
+=====================================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    font-family:
+
+        "Poppins",
+
+        sans-serif;
+
+    background: #000;
+
+    color: white;
+
+}
+
+/*=====================================================
+                BACKGROUND
+=====================================================*/
+
+#background {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(circle at top,
+
+            #2b4f96 0%,
+
+            #162b63 22%,
+
+            #09183d 45%,
+
+            #020817 75%,
+
+            #000 100%);
+
+}
+
+/* Nebula Glow */
+
+#background::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 900px;
+
+    height: 900px;
+
+    left: -250px;
+
+    top: -250px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(circle,
+
+            rgba(132, 162, 255, .15),
+
+            transparent 70%);
+
+}
+
+#background::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+
+    height: 700px;
+
+    right: -200px;
+
+    bottom: -200px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(circle,
+
+            rgba(255, 0, 120, .08),
+
+            transparent 70%);
+
+}
+
+/*=====================================================
+                    STARS
+=====================================================*/
+
+#stars {
+
+    position: absolute;
+
+    inset: 0;
+
+}
+
+.star {
+
+    position: absolute;
+
+    width: 2px;
+
+    height: 2px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    animation: twinkle linear infinite;
+
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+
+        opacity: .25;
+
+        transform: scale(.8);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: scale(1.8);
+
+    }
+
+}
+
+/*=====================================================
+            PLAYER CONTAINER
+=====================================================*/
+
+#playerContainer {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 430px;
+
+    padding: 35px;
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(25px);
+
+    background:
+
+        rgba(255, 255, 255, .08);
+
+    border:
+
+        1px solid rgba(255, 255, 255, .15);
+
+    box-shadow:
+
+        0 20px 60px rgba(0, 0, 0, .45);
+
+    z-index: 5;
+
+    text-align: center;
+
+}
+
+h1 {
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+
+}
+
+.subtitle {
+
+    opacity: .75;
+
+    margin-bottom: 35px;
+
+}
+
+/*=====================================================
+            RECORD PLAYER
+=====================================================*/
+
+#recordPlayer {
+
+    position: relative;
+
+    width: 280px;
+
+    height: 280px;
+
+    margin: auto;
+
+}
+
+/* Vinyl */
+
+#vinyl {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 250px;
+
+    height: 250px;
+
+    border-radius: 50%;
+
+    background:
+
+        repeating-radial-gradient(circle,
+
+            #111 0px,
+
+            #111 3px,
+
+            #222 4px,
+
+            #111 6px);
+
+    box-shadow:
+
+        0 0 40px rgba(0, 0, 0, .6);
+
+}
+
+/* Center Label */
+
+#vinyl::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: #ff4d8d;
+
+}
+
+/* Album Cover */
+
+#albumCover {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 170px;
+
+    height: 170px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    box-shadow:
+
+        0 0 35px rgba(255, 90, 150, .6);
+
+}
+
+#albumCover img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+/*=====================================================
+                SONG INFO
+=====================================================*/
+
+#songInfo {
+
+    margin-top: 30px;
+
+}
+
+#songInfo h2 {
+
+    font-size: 26px;
+
+}
+
+#songInfo p {
+
+    opacity: .7;
+
+    margin-top: 8px;
+
+}
+
+/*=====================================================
+                PLAY BUTTON
+=====================================================*/
+
+#controls {
+
+    margin-top: 30px;
+
+}
+
+#playBtn {
+
+    width: 80px;
+
+    height: 80px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+
+        linear-gradient(135deg,
+
+            #ff3b82,
+
+            #ff6db0);
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 0 35px rgba(255, 70, 150, .55);
+
+    transition: .35s;
+
+}
+
+#playBtn:hover {
+
+    transform: scale(1.08);
+
+}
+
+/*=====================================================
+                PROGRESS
+=====================================================*/
+
+#progressArea {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+#progressBar {
+
+    flex: 1;
+
+    height: 7px;
+
+    background:
+
+        rgba(255, 255, 255, .15);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+}
+
+#progress {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+
+        linear-gradient(to right,
+
+            #ff3b82,
+
+            #ffd86a);
+
+}
+
+/*=====================================================
+                EQUALIZER
+=====================================================*/
+
+#equalizer {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    gap: 6px;
+
+    height: 50px;
+
+}
+
+#equalizer span {
+
+    width: 7px;
+
+    height: 20px;
+
+    background: #ff4d8d;
+
+    border-radius: 20px;
+
+}
+
+/*====================================================
+            FLOATING HEARTS
+====================================================*/
+
+.floatingHeart {
+
+    position: absolute;
+
+    bottom: -40px;
+
+    animation: heartFloat 8s linear forwards;
+
+    opacity: .8;
+
+}
+
+@keyframes heartFloat {
+
+    0% {
+
+        transform: translateY(0);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: translateY(-120vh);
+
+        opacity: 0;
+
+    }
+
+}
+
+/*====================================================
+            MUSIC NOTES
+====================================================*/
+
+.musicNote {
+
+    position: absolute;
+
+    bottom: -40px;
+
+    color: white;
+
+    animation: noteFloat 7s linear forwards;
+
+    opacity: .8;
+
+}
+
+@keyframes noteFloat {
+
+    0% {
+
+        transform: translateY(0) rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+    10% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+
+            translateY(-120vh) rotate(40deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+/*====================================================
+            VINYL
+====================================================*/
+
+.spin {
+
+    animation: spinRecord 5s linear infinite;
+
+}
+
+@keyframes spinRecord {
+
+    from {
+
+        transform:
+
+            translate(-50%, -50%) rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+
+            translate(-50%, -50%) rotate(360deg);
+
+    }
+
+}
+
+/*====================================================
+            ALBUM
+====================================================*/
+
+.pulse {
+
+    animation: pulseAlbum 1.8s ease-in-out infinite;
+
+}
+
+@keyframes pulseAlbum {
+
+    0%,
+    100% {
+
+        transform:
+
+            translate(-50%, -50%) scale(1);
+
+    }
+
+    50% {
+
+        transform:
+
+            translate(-50%, -50%) scale(1.04);
+
+    }
+
+}
+
+/*=====================================================
+                    LYRICS
+=====================================================*/
+
+#lyricsSection {
+
+    position: absolute;
+
+    right: 60px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 420px;
+
+    height: 600px;
+
+    z-index: 5;
+
+}
+
+#lyricsSection h2 {
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+    font-size: 30px;
+
+}
+
+#lyricsContainer {
+
+    height: 520px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    border-radius: 25px;
+
+    backdrop-filter: blur(20px);
+
+    background: rgba(255, 255, 255, .08);
+
+    border: 1px solid rgba(255, 255, 255, .12);
+
+}
+
+#lyrics {
+
+    position: absolute;
+
+    width: 100%;
+
+    transition: transform .8s ease;
+
+}
+
+.lyric {
+
+    padding: 25px;
+
+    font-size: 22px;
+
+    color: #bfbfbf;
+
+    text-align: center;
+
+    transition: .4s;
+
+    line-height: 1.8;
+
+}
+
+.lyric.active {
+
+    color: white;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    text-shadow:
+
+        0 0 20px #ff5ca8,
+
+        0 0 40px #ff5ca8;
+
+}
+
+.lyric.past {
+
+    opacity: .35;
+
+}
+
+/*=========================================
+            ENDING SCREEN
+=========================================*/
+
+#endingScreen {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: rgba(0, 0, 0, .95);
+
+    backdrop-filter: blur(18px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 1.5s;
+
+    z-index: 9999;
+
+}
+
+#endingScreen.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+#endingContent {
+
+    text-align: center;
+
+    color: white;
+
+    transform: translateY(40px);
+
+    transition: 1.5s;
+
+}
+
+#endingScreen.show #endingContent {
+
+    transform: translateY(0);
+
+}
+
+#endingContent h1 {
+
+    font-size: 80px;
+
+    margin-bottom: 20px;
+
+    animation: pulseHeart 2s infinite;
+
+}
+
+#endingContent h2 {
+
+    font-size: 40px;
+
+    margin: 10px 0;
+
+}
+
+#endingContent p {
+
+    font-size: 22px;
+
+    color: #dddddd;
+
+    line-height: 1.8;
+
+}
+
+#endingContent h3 {
+
+    margin-top: 20px;
+
+    font-size: 34px;
+
+    color: #ff7eb5;
+
+}
+
+#endingContent span {
+
+    display: block;
+
+    margin-top: 10px;
+
+    color: #bbbbbb;
+
+    font-size: 18px;
+
+}
+
+/* Continue Button */
+
+#continueBtn {
+
+    margin-top: 45px;
+
+    padding: 18px 50px;
+
+    border: none;
+
+    border-radius: 60px;
+
+    cursor: pointer;
+
+    font-size: 22px;
+
+    color: white;
+
+    background: linear-gradient(135deg, #ff4d8f, #ff7eb5);
+
+    box-shadow: 0 0 25px rgba(255, 80, 150, .6);
+
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition: 1s;
+
+}
+
+#continueBtn.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+#continueBtn:hover {
+
+    transform: scale(1.08);
+
+    box-shadow: 0 0 40px rgba(255, 80, 150, .9);
+
+}
+
+@keyframes pulseHeart {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.12);
+
+    }
+
+}
+
+/*==============================
+        END BUTTONS
+==============================*/
+
+#endButtons {
+
+    margin-top: 40px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+}
+
+#replayBtn {
+
+    padding: 18px 45px;
+
+    border: none;
+
+    border-radius: 60px;
+
+    cursor: pointer;
+
+    font-size: 22px;
+
+    color: white;
+
+    background: linear-gradient(135deg, #5b6cff, #7b88ff);
+
+    box-shadow: 0 0 25px rgba(91, 108, 255, .55);
+
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition: 1s;
+
+}
+
+#replayBtn.show {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+#replayBtn:hover {
+
+    transform: scale(1.08);
+
+}
+
+/*==================================================
+                LARGE TABLETS
+==================================================*/
+
+@media (max-width:1024px) {
+
+    #playerContainer {
+
+        width: 390px;
+
+    }
+
+    #lyricsSection {
+
+        width: 350px;
+
+        right: 20px;
+
+    }
+
+}
+
+
+/*==================================================
+                    TABLETS
+==================================================*/
+
+@media (max-width:768px) {
+
+    body {
+
+        display: block;
+
+    }
+
+    #playerContainer {
+
+        position: relative;
+
+        top: auto;
+        left: auto;
+
+        transform: none;
+
+        margin: 30px auto;
+
+        width: 92%;
+
+        max-width: 430px;
+
+    }
+
+    #lyricsSection {
+
+        position: relative;
+
+        top: auto;
+        right: auto;
+
+        transform: none;
+
+        width: 92%;
+
+        max-width: 430px;
+
+        height: 500px;
+
+        margin: 20px auto 40px;
+
+    }
+
+    #lyricsContainer {
+
+        height: 430px;
+
+    }
+
+    #recordPlayer {
+
+        width: 240px;
+
+        height: 240px;
+
+    }
+
+    #vinyl {
+
+        width: 210px;
+
+        height: 210px;
+
+    }
+
+    #albumCover {
+
+        width: 145px;
+
+        height: 145px;
+
+    }
+
+}
+
+
+/*==================================================
+                LARGE PHONES
+==================================================*/
+
+@media (max-width:430px) {
+
+    #playerContainer {
+
+        padding: 25px;
+
+    }
+
+    h1 {
+
+        font-size: 24px;
+
+    }
+
+    #songInfo h2 {
+
+        font-size: 22px;
+
+    }
+
+    #recordPlayer {
+
+        width: 210px;
+
+        height: 210px;
+
+    }
+
+    #vinyl {
+
+        width: 185px;
+
+        height: 185px;
+
+    }
+
+    #albumCover {
+
+        width: 125px;
+
+        height: 125px;
+
+    }
+
+    #playBtn {
+
+        width: 70px;
+
+        height: 70px;
+
+        font-size: 26px;
+
+    }
+
+    .lyric {
+
+        font-size: 18px;
+
+    }
+
+    .lyric.active {
+
+        font-size: 23px;
+
+    }
+
+}
+
+
+/*==================================================
+                iPHONE / PIXEL
+==================================================*/
+
+@media (max-width:390px) {
+
+    #playerContainer {
+
+        width: 94%;
+
+        padding: 22px;
+
+    }
+
+    h1 {
+
+        font-size: 22px;
+
+    }
+
+    .subtitle {
+
+        font-size: 14px;
+
+    }
+
+    #songInfo h2 {
+
+        font-size: 20px;
+
+    }
+
+    #recordPlayer {
+
+        width: 190px;
+
+        height: 190px;
+
+    }
+
+    #vinyl {
+
+        width: 170px;
+
+        height: 170px;
+
+    }
+
+    #albumCover {
+
+        width: 115px;
+
+        height: 115px;
+
+    }
+
+}
+
+
+/*==================================================
+                    ANDROID
+==================================================*/
+
+@media (max-width:360px) {
+
+    #playerContainer {
+
+        padding: 20px;
+
+    }
+
+    h1 {
+
+        font-size: 20px;
+
+    }
+
+    #recordPlayer {
+
+        width: 175px;
+
+        height: 175px;
+
+    }
+
+    #vinyl {
+
+        width: 155px;
+
+        height: 155px;
+
+    }
+
+    #albumCover {
+
+        width: 105px;
+
+        height: 105px;
+
+    }
+
+    #playBtn {
+
+        width: 65px;
+
+        height: 65px;
+
+        font-size: 24px;
+
+    }
+
+    .lyric {
+
+        font-size: 16px;
+
+    }
+
+    .lyric.active {
+
+        font-size: 20px;
+
+    }
+
+}
+
+
+/*==================================================
+                SMALL PHONES
+==================================================*/
+
+@media (max-width:320px) {
+
+    #playerContainer {
+
+        width: 96%;
+
+        padding: 18px;
+
+    }
+
+    h1 {
+
+        font-size: 18px;
+
+    }
+
+    .subtitle {
+
+        font-size: 13px;
+
+    }
+
+    #songInfo h2 {
+
+        font-size: 18px;
+
+    }
+
+    #recordPlayer {
+
+        width: 160px;
+
+        height: 160px;
+
+    }
+
+    #vinyl {
+
+        width: 140px;
+
+        height: 140px;
+
+    }
+
+    #albumCover {
+
+        width: 95px;
+
+        height: 95px;
+
+    }
+
+    #playBtn {
+
+        width: 60px;
+
+        height: 60px;
+
+        font-size: 22px;
+
+    }
+
+    #progressArea {
+
+        gap: 8px;
+
+    }
+
+    #lyricsSection {
+
+        height: 420px;
+
+    }
+
+    #lyricsContainer {
+
+        height: 360px;
+
+    }
+
+    .lyric {
+
+        font-size: 15px;
+
+    }
+
+    .lyric.active {
+
+        font-size: 18px;
+
+    }
+
+}
+
+
+/*==================================================
+            ENDING SCREEN
+==================================================*/
+
+@media (max-width:768px) {
+
+    #endingContent {
+
+        width: 90%;
+
+        margin: auto;
+
+    }
+
+    #endingContent h1 {
+
+        font-size: 60px;
+
+    }
+
+    #endingContent h2 {
+
+        font-size: 28px;
+
+    }
+
+    #endingContent p {
+
+        font-size: 18px;
+
+    }
+
+    #endButtons {
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+    #continueBtn,
+    #replayBtn {
+
+        width: 260px;
+
+    }
+
+}
+
+@media (max-width:430px) {
+
+    #endingContent h1 {
+
+        font-size: 50px;
+
+    }
+
+    #endingContent h2 {
+
+        font-size: 22px;
+
+    }
+
+    #endingContent p {
+
+        font-size: 16px;
+
+    }
+
+    #continueBtn,
+    #replayBtn {
+
+        width: 220px;
+
+        font-size: 18px;
+
+    }
+
+}
+
+@media (max-width:320px) {
+
+    #endingContent h1 {
+
+        font-size: 42px;
+
+    }
+
+    #endingContent h2 {
+
+        font-size: 18px;
+
+    }
+
+    #continueBtn,
+    #replayBtn {
+
+        width: 190px;
+
+        font-size: 16px;
+
+    }
+
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday Fireworks</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/firework.css">
+
+</head>
+
+<body>
+
+    <div class="stage">
+
+        <!-- Night Sky -->
+
+        <div class="sky">
+
+            <div class="moon"></div>
+
+            <div id="stars"></div>
+
+            <canvas id="canvas"></canvas>
+
+        </div>
+
+
+        <!-- Curtains -->
+
+        <div id="leftCurtain" class="curtain left"></div>
+
+        <div id="rightCurtain" class="curtain right"></div>
+
+
+        <!-- Theatre Rope -->
+
+        <div id="ropeContainer">
+
+            <div id="pulley"></div>
+
+            <div id="rope">
+
+                <div class="ropeLine"></div>
+
+                <div id="ring"></div>
+
+            </div>
+
+            <p id="pullText">
+
+                Pull the rope to begin the show
+
+            </p>
+
+        </div>
+
+
+        <!-- Birthday Message -->
+
+        <div id="birthdayMessage">
+
+            <h1>Happy Birthday</h1>
+
+            <h2>Mahi ❤️</h2>
+
+        </div>
+
+
+        <!-- Continue -->
+
+        <button id="continueBtn">
+
+            Continue →
+
+        </button>
+
+    </div>
+
+    <script src="js/firework.js"></script>
+
+    <script src="js/fireworks.js"></script>
+
+    <script src="js/finale.js"></script>
+
+
+</body>
+
+</html>

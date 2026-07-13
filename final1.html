@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBD love</title>
+    <style>
+        :root {
+            --primary-color: #ff4d6d;
+            --secondary-color: #ffb3c1;
+            --bg-color: #0b090a;
+            --card-bg: rgba(22, 19, 21, 0.85);
+            --text-color: #f7f4f3;
+            --accent-glow: rgba(255, 77, 109, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            /* Enhanced premium radial gradient background */
+            background: radial-gradient(circle at 50% 50%, #1e121c 0%, #08050a 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Changed to allow vertical scrolling when text expands */
+            overflow-x: hidden;
+            overflow-y: auto;
+            perspective: 1000px;
+            padding: 2rem 0;
+        }
+
+        /* Floating background elements with depth enhancements */
+        .background-heart {
+            position: absolute;
+            color: rgba(255, 77, 109, 0.18);
+            font-size: var(--size);
+            left: var(--x);
+            top: 105vh;
+            animation: floatUp var(--duration) linear infinite;
+            user-select: none;
+            pointer-events: none;
+            filter: drop-shadow(0 0 8px var(--accent-glow));
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-120vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Container Card */
+        .container {
+            width: 90%;
+            max-width: 550px;
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 179, 193, 0.25);
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6),
+                0 0 60px rgba(255, 77, 109, 0.15);
+            text-align: center;
+            z-index: 10;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: auto;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), 0 0 70px rgba(255, 77, 109, 0.2);
+        }
+
+        /* Interactive Heart Button */
+        .heart-trigger {
+            font-size: 4rem;
+            cursor: pointer;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            animation: pulse 1.5s infinite;
+            transition: transform 0.2s ease;
+        }
+
+        .heart-trigger:active {
+            transform: scale(0.9);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Typography & Typewriter */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 179, 193, 0.3);
+        }
+
+        .message-box {
+            min-height: 120px;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            color: #e8e4e3;
+            text-align: left;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--primary-color);
+            margin-left: 3px;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Live Counter Styling */
+        .counter-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #b5aba9;
+            margin-bottom: 0.75rem;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.75rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .time-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+            text-shadow: 0 0 5px rgba(255, 77, 109, 0.3);
+        }
+
+        .time-label {
+            font-size: 0.7rem;
+            color: #b5aba9;
+            text-transform: uppercase;
+        }
+
+        /* Next Page Button Action */
+        .journey-btn {
+            display: none;
+            /* Initially hidden until typewriter finishes */
+            background: linear-gradient(135deg, #ff4d6d 0%, #ff758f 100%);
+            color: #ffffff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: slideUpFade 0.6s ease forwards;
+            margin: 1.5rem auto 0 auto;
+            width: fit-content;
+        }
+
+        .journey-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(255, 77, 109, 0.6);
+            background: linear-gradient(135deg, #ff758f 0%, #ff4d6d 100%);
+        }
+
+        .journey-btn:active {
+            transform: translateY(-1px);
+        }
+
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Clicking this generates additional bursts of floating hearts -->
+        <div class="heart-trigger" id="heartBtn">💖</div>
+
+        <h1>Happy Birthday! ✨</h1>
+
+        <div class="message-box">
+            <span id="typewriter"></span><span class="cursor">|</span>
+        </div>
+
+        <div class="counter-title">Time elapsed since you entered the world:</div>
+        <div class="counter-grid">
+            <div class="time-box">
+                <span class="time-value" id="days">00</span>
+                <span class="time-label">Days</span>
+            </div>
+            <div class="time-box">
+                <span class="time-value" id="hours">00</span>
+                <span class="time-label">Hrs</span>
+            </div>
+            <div class="time-box">
+                <span class="time-value" id="minutes">00</span>
+                <span class="time-label">Mins</span>
+            </div>
+            <div class="time-box">
+                <span class="time-value" id="seconds">00</span>
+                <span class="time-label">Secs</span>
+            </div>
+        </div>
+
+        <!-- Next Page CTA Link Button -->
+        <a href="index.html" class="journey-btn" id="journeyBtn">Reply the Journey</a>
+    </div>
+
+    <script>
+        // 1. CONFIGURATION
+        // Set the birthday milestone date here (YYYY-MM-DDTHH:MM:SS)
+        const birthdayDate = new Date("2006-07-18T00:00:00");
+
+        // Custom message array (Each element represents a new paragraph breakdown)
+        const messages = [
+            "Hey you! 💞",
+            "Wishing you the absolute happiest of birthdays today. 🎈",
+            "May your year ahead be filled with endless laugher, beautiful moments, and all the success you deserve. 🍀",
+            "Just a tiny reminder... you are incredibly special, and the world is vastly better with you in it. ❤️😘",
+            "Hey Mahi, this will be my last message to you. Moving forward, I won't be calling or texting anymore. I am truly sorry for any problems I caused. Before I go far away, I would really like to meet you one last time to give you a final hug and hand over some gifts I have for you.",
+            "HAPPY BIRTHDAY ONCE AGAIN, MAHI! 🎉🎂"
+
+        ];
+
+        // 2. LIVE MILESTONE COUNTER ENGINE
+        function updateCounter() {
+            const now = new Date();
+            const difference = now - birthdayDate;
+
+            const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d;
+            document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+            document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+        }
+        setInterval(updateCounter, 1000);
+        updateCounter();
+
+        // 3. TYPEWRITER EFFECT
+        const typewriterElement = document.getElementById("typewriter");
+        const journeyButton = document.getElementById("journeyBtn");
+        let currentMessageIndex = 0;
+        let currentCharIndex = 0;
+
+        function type() {
+            if (currentMessageIndex < messages.length) {
+                const currentFullText = messages[currentMessageIndex];
+
+                if (currentCharIndex < currentFullText.length) {
+                    typewriterElement.innerHTML += currentFullText.charAt(currentCharIndex);
+                    currentCharIndex++;
+                    setTimeout(type, 35); // Slightly tuned faster typing speed variable (ms)
+                } else {
+                    // Message line finished, insert line breaks and move to the next index block
+                    typewriterElement.innerHTML += "<br><br>";
+                    currentMessageIndex++;
+                    currentCharIndex = 0;
+                    setTimeout(type, 500); // Pause duration between lines
+                }
+            } else {
+                // Hide the flashing cursor element when typing array terminates fully
+                document.querySelector('.cursor').style.display = 'none';
+                // Display the "Reply the Journey" action link button gracefully
+                journeyButton.style.display = 'block';
+            }
+        }
+        // Start typewriter engine shortly after DOM paints layout frame
+        setTimeout(type, 1000);
+
+        // 4. FLOATING HEARTS GENERATOR
+        function createHeart(isBurst = false) {
+            const heart = document.createElement("div");
+            heart.classList.add("background-heart");
+            heart.innerHTML = ["❤️", "💖", "💝", "💕", "✨"][Math.floor(Math.random() * 5)];
+
+            // Randomize spatial properties dynamically
+            const size = isBurst ? (Math.random() * 20 + 10) : (Math.random() * 30 + 10);
+            const duration = isBurst ? (Math.random() * 2 + 1.5) : (Math.random() * 5 + 5);
+            const xPos = Math.random() * 100;
+
+            heart.style.setProperty("--size", `${size}px`);
+            heart.style.setProperty("--duration", `${duration}s`);
+            heart.style.setProperty("--x", `${xPos}vw`);
+
+            // If it's a manual click burst effect, originate heart near container center coordinates
+            if (isBurst) {
+                heart.style.top = "50vh";
+                heart.style.left = `${Math.random() * 40 + 30}vw`;
+            }
+
+            document.body.appendChild(heart);
+
+            // Clean up node references after animation routines finish cycles
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Generate baseline ambient background hearts systematically
+        setInterval(() => createHeart(false), 900);
+
+        // Burst additional hearts manually when interaction element is triggered
+        document.getElementById("heartBtn").addEventListener("click", () => {
+            for (let i = 0; i < 15; i++) {
+                createHeart(true);
+            }
+        });
+    </script>
+</body>
+
+</html>
