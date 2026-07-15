@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3600);
 
     // Click handler acts as an immediate fallback or triggers the microphone experience
-    btnBlow.addEventListener("click", () => {
+    btnBlow.addEventListener("click", async () => {
         if (isExtinguished) return;
 
         // Attempt to initialize microphone for genuine interactive blowing
@@ -31,15 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
             subtitle.innerText = "Breathe in deeply and blow directly onto your screen! 🌬️";
 
             navigator.mediaDevices.getUserMedia({ audio: true })
-                .then(stream => {
+                .then(async (stream) => {
                     micStream = stream;
                     audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+                    await audioContext.resume();
                     const source = audioContext.createMediaStreamSource(stream);
                     analyser = audioContext.createAnalyser();
                     analyser.fftSize = 256;
                     source.connect(analyser);
 
-                    const bufferLength = analyser.frequencyBinCount;
+                    const bufferLength = analyser.fftSize;
                     dataArray = new Uint8Array(bufferLength);
 
                     // Start checking audio levels
@@ -59,7 +61,25 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkBlowVolume() {
         if (isExtinguished || !analyser) return;
 
-        analyser.getByteFrequencyData(dataArray);
+        analyser.getByteTimeDomainData(dataArray);
+
+        let sum = 0;
+
+        for (let i = 0; i < dataArray.length; i++) {
+
+            let x = (dataArray[i] - 128) / 128;
+
+            sum += x * x;
+
+        }
+
+        const rms = Math.sqrt(sum / dataArray.length);
+
+        if (rms > 0.12) {
+
+            triggerBlowOutSequence();
+
+        }
         let totalVolume = 0;
 
         // Target mid-to-high frequencies where blowing close to a microphone registers strongly
@@ -68,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         let averageVolume = totalVolume / (dataArray.length - 15);
 
-        if (averageVolume > 60) {
+        if (averageVolume > 25) {
             triggerBlowOutSequence();
 
             // Clean up microphone streams safely
@@ -77,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             analyser = null;
         } else {
-            requestAnimationFrame(checkBlowVolume);
+            setTimeout(checkBlowVolume, 40);
         }
     }
 
