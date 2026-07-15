@@ -1,5 +1,5 @@
 /*====================================
-            RESET
+            RESET & BASE
 =====================================*/
 
 * {
@@ -9,17 +9,11 @@
 }
 
 body {
-
     font-family: 'Poppins', sans-serif;
-
     background: #FFE8F1;
-
     min-height: 100vh;
-
     overflow-x: hidden;
-
     overflow-y: auto;
-
 }
 
 /*====================================
@@ -27,17 +21,10 @@ body {
 =====================================*/
 
 .background {
-
     position: fixed;
-
     inset: 0;
-
-    background:
-
-        radial-gradient(circle at top, #ffffff, #ffe8f1 45%, #ffdbe8);
-
+    background: radial-gradient(circle at top, #ffffff, #ffeaf2 45%, #ffdce9);
     z-index: -5;
-
 }
 
 /*====================================
@@ -45,21 +32,13 @@ body {
 =====================================*/
 
 .container {
-
     width: 100%;
-
     min-height: 100vh;
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
-
     padding: 80px 20px;
-
 }
 
 /*====================================
@@ -67,211 +46,241 @@ body {
 =====================================*/
 
 .envelope {
-
     position: relative;
-
-    width: 420px;
-
-    height: 280px;
-
+    width: 440px;
+    height: 290px;
     margin-top: 30px;
-
+    perspective: 1500px;
 }
 
-/*======================
-    BACK
-======================*/
+/*====================================
+  ENVELOPE BODY (3D OVERLAPPING FLAPS)
+=====================================*/
 
 .envelope-back {
-
     position: absolute;
-
     bottom: 0;
-
     width: 100%;
-
-    height: 220px;
-
-    background: linear-gradient(to bottom,
-
-            #ffffff,
-
-            #f7edf0);
-
-    border-radius: 12px;
-
+    height: 225px;
+    background: #fffdfa;
+    /* Luxury ivory base */
+    border-radius: 0 0 16px 16px;
     box-shadow:
-
-        0 25px 45px rgba(0, 0, 0, .18);
-
+        0 25px 60px rgba(180, 20, 70, 0.15),
+        0 12px 25px rgba(0, 0, 0, 0.04),
+        inset 0 -5px 20px rgba(180, 20, 70, 0.03);
+    overflow: hidden;
+    z-index: 5;
+    border: 1px solid rgba(216, 27, 96, 0.1);
 }
 
-/*======================
-        FLAP
-======================*/
+/* 1. Left Overlapping Paper Flap */
+.envelope-back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 112px solid transparent;
+    border-bottom: 112px solid transparent;
+    border-left: 220px solid #fffafd;
+    /* Highlighted left side */
+    filter: drop-shadow(4px 2px 5px rgba(0, 0, 0, 0.05));
+    z-index: 6;
+}
+
+/* 2. Right Overlapping Paper Flap & Gold Border Frame */
+.envelope-back::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-top: 112px solid transparent;
+    border-bottom: 112px solid transparent;
+    border-right: 220px solid #fff5f8;
+    /* Slightly darker pinkish shadow */
+    filter: drop-shadow(-4px 2px 5px rgba(0, 0, 0, 0.05));
+    z-index: 7;
+}
+
+/* 3. Bottom Folding Pocket Flap (Rises from the bottom to seal it) */
+.envelope-back-pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    background: linear-gradient(180deg, #fffffb 0%, #fff9fb 100%);
+    clip-path: polygon(0 100%, 100% 100%, 50% 0);
+    z-index: 8;
+    filter: drop-shadow(0 -3px 5px rgba(0, 0, 0, 0.04));
+    border-bottom: 1px solid rgba(216, 27, 96, 0.05);
+}
+
+/* Elegant Gold Inner Filigree Border */
+.envelope-back-pocket::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px dashed #e5c158;
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+/*====================================
+     3D HAND-CRAFTED TOP FLAP
+=====================================*/
 
 .flap {
-
     position: absolute;
-
     width: 100%;
-
-    height: 150px;
-
-    background: #ffd1df;
-
+    height: 155px;
+    /* Textured Cardstock Pink Gradient */
+    background: linear-gradient(180deg, #ffbccc 0%, #ff8da3 95%, #e06d84 100%);
     clip-path: polygon(0 0, 100% 0, 50% 100%);
-
     transform-origin: top;
-
-    transition: 1s;
-
-    z-index: 8;
-
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s;
+    z-index: 9;
+    /* Soft 3D shadow cast downward onto the envelope body */
+    filter: drop-shadow(0 8px 12px rgba(135, 10, 45, 0.22));
 }
 
-/*======================
-    LETTER
-======================*/
+/* Elegant Golden Tip Accent on the triangular Flap */
+.flap::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #e5c158;
+    /* Gold metallic point */
+    opacity: 0.9;
+}
+
+/*====================================
+      LETTER PREVIEW (SLIDING OUT)
+=====================================*/
 
 .letter-preview {
-
     position: absolute;
-
-    left: 25px;
-
-    bottom: 60px;
-
-    width: 370px;
-
-    height: 190px;
-
-    background: #fffdf7;
-
-    border-radius: 8px;
-
-    box-shadow:
-
-        inset 0 0 20px rgba(0, 0, 0, .05);
-
-    transition: 1s;
-
-}
-
-/* Fake Text */
-
-.letter-preview::before {
-
-    content: "";
-
-    position: absolute;
-
     left: 30px;
-
-    top: 30px;
-
-    width: 300px;
-
-    height: 2px;
-
-    background: #e9e9e9;
-
+    bottom: 55px;
+    width: 380px;
+    height: 200px;
+    background: linear-gradient(to bottom, #fffdf9, #fffbf2);
+    /* Warm parchment paper */
+    border-radius: 8px;
+    touch-action: none;
+    user-select: none;
     box-shadow:
-
-        0 30px #e9e9e9,
-
-        0 60px #e9e9e9,
-
-        0 90px #e9e9e9,
-
-        0 120px #e9e9e9;
-
+        0 8px 25px rgba(0, 0, 0, 0.06),
+        inset 0 0 15px rgba(229, 193, 88, 0.1);
+    transition: 1s;
+    z-index: 4;
 }
 
-/*======================
-        WAX
-======================*/
+/* Vintage Hand-ruled lines */
+.letter-preview::before {
+    content: "";
+    position: absolute;
+    left: 35px;
+    top: 35px;
+    width: 310px;
+    height: 1px;
+    background: rgba(216, 27, 96, 0.08);
+    box-shadow:
+        0 25px rgba(216, 27, 96, 0.08),
+        0 50px rgba(216, 27, 96, 0.08),
+        0 75px rgba(216, 27, 96, 0.08),
+        0 100px rgba(216, 27, 96, 0.08),
+        0 125px rgba(216, 27, 96, 0.08);
+}
+
+/*====================================
+   REALISTIC 3D EMBOSSED WAX SEAL
+=====================================*/
 
 .wax {
-
     position: absolute;
-
     left: 50%;
-
-    top: 110px;
-
+    top: 125px;
+    /* Sits exactly over the gold triangular point */
     transform: translateX(-50%);
-
-    width: 65px;
-
-    height: 65px;
-
-    border-radius: 50%;
-
-    background:
-
-        radial-gradient(circle at top,
-
-            #ff81ab,
-
-            #d81b60);
-
+    width: 62px;
+    height: 62px;
+    /* Irregular melted circle shape */
+    border-radius: 47% 53% 49% 51% / 51% 48% 52% 49%;
+    /* Rich metallic-crimson wax material gradient */
+    background: radial-gradient(circle at 35% 30%, #ff5d8d 0%, #d81b60 55%, #880934 100%);
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
-    color: white;
-
-    font-size: 26px;
-
+    color: #fffaf0;
+    font-size: 22px;
     cursor: pointer;
-
     z-index: 20;
-
+    /* Multi-layered shadows for authentic depth */
     box-shadow:
-
-        0 10px 25px rgba(216, 27, 96, .35);
-
-    transition: .4s;
-
+        0 8px 20px rgba(136, 9, 52, 0.45),
+        0 3px 6px rgba(0, 0, 0, 0.15),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.45),
+        inset -3px -3px 6px rgba(0, 0, 0, 0.45);
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.45), 1px 1px 1px rgba(255, 255, 255, 0.25);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .wax:hover {
+    transform: translateX(-50%) scale(1.08) rotate(-3deg);
+    box-shadow:
+        0 12px 28px rgba(136, 9, 52, 0.55),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.5),
+        inset -3px -3px 6px rgba(0, 0, 0, 0.45);
+}
 
-    transform:
+/* Inner Seal Rim (Press boundary of a real stamp) */
+.wax::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 250, 240, 0.15);
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.3), 1px 1px 2px rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+}
 
-        translateX(-50%) scale(1.08);
+/*====================================
+    CLUTTER CLEANSING (HIDE OLD SHAPES)
+=====================================*/
 
+.flower,
+.leaf,
+.mini-heart {
+    display: none !important;
 }
 
 /*======================
-        HINT
+        HINT TEXT
 ======================*/
 
 .hint {
-
     margin-top: 40px;
-
     color: #b84d72;
-
     font-size: 20px;
-
     font-weight: 500;
-
     animation: pulse 2s infinite;
-
 }
 
 @keyframes pulse {
-
     50% {
-
         opacity: .45;
-
     }
-
 }
 
 /*====================================
@@ -279,58 +288,27 @@ body {
 =====================================*/
 
 .diary {
-
     display: none;
-
     width: 100%;
-
     margin-top: 80px;
-
 }
 
 .paper {
-
     position: relative;
-
     width: min(850px, 95%);
-
     margin: auto;
-
-    background: linear-gradient(#fffef8,
-
-            #fff7ec);
-
+    background: linear-gradient(#fffef8, #fff7ec);
     border-radius: 18px;
-
     padding: 70px;
-
-    box-shadow:
-
-        0 30px 70px rgba(0, 0, 0, .2);
-
+    box-shadow: 0 30px 70px rgba(0, 0, 0, .2);
     overflow: hidden;
-
 }
 
 .paper::before {
-
     content: "";
-
     position: absolute;
-
     inset: 0;
-
-    background:
-
-        repeating-linear-gradient(transparent,
-
-            transparent 34px,
-
-            rgba(0, 0, 0, .03) 35px);
-
-}
-
-.paper::before {
+    background: repeating-linear-gradient(transparent, transparent 34px, rgba(0, 0, 0, .03) 35px);
     pointer-events: none;
 }
 
@@ -340,129 +318,77 @@ body {
 }
 
 .bookmark {
-
     position: absolute;
-
     right: 70px;
-
     top: 0;
-
     width: 25px;
-
     height: 90px;
-
     background: #ff4d88;
-
 }
 
 .bookmark::after {
-
     content: "";
-
     position: absolute;
-
     bottom: -15px;
-
     left: 0;
-
     border-left: 12.5px solid transparent;
-
     border-right: 12.5px solid transparent;
-
     border-top: 15px solid #ff4d88;
-
 }
 
 .paper h1 {
-
     font-family: 'Dancing Script', cursive;
-
     font-size: 60px;
-
     color: #d6336c;
-
     margin-bottom: 40px;
-
 }
 
 #typing {
-
     font-family: 'Caveat', cursive;
-
     font-size: 34px;
-
     line-height: 1.8;
-
     color: #555;
-
     white-space: pre-wrap;
-
 }
 
 #signature {
-
     display: none;
-
     margin-top: 50px;
-
     text-align: right;
-
     font-family: 'Dancing Script', cursive;
-
     font-size: 42px;
-
     color: #d6336c;
-
 }
 
 #signature span {
-
     font-size: 52px;
-
 }
 
 #continueBtn {
-
     display: none;
-
     margin: 50px auto 0;
-
     padding: 16px 42px;
-
     border: none;
-
     border-radius: 50px;
-
     background: #ff4d88;
-
     color: white;
-
     font-size: 18px;
-
     cursor: pointer;
-
     transition: .3s;
-
     z-index: 100;
-
 }
 
 #continueBtn:hover {
-
     transform: translateY(-3px);
-
 }
 
 /*====================================
-        CORNERS
+        CORNERS (OF DIARY PAGE)
 =====================================*/
 
 .corner {
-
     position: absolute;
-
     font-size: 34px;
-
 }
 
 .tl {
@@ -486,11 +412,10 @@ body {
 }
 
 /*====================================
-        LARGE TABLETS
+        RESPONSIVE MEDIA QUERIES
 =====================================*/
 
 @media (max-width:1024px) {
-
     .paper {
         width: 92%;
         padding: 60px;
@@ -503,15 +428,9 @@ body {
     #typing {
         font-size: 30px;
     }
-
 }
 
-/*====================================
-            TABLETS
-=====================================*/
-
 @media (max-width:768px) {
-
     body {
         overflow-x: hidden;
         overflow-y: auto;
@@ -530,6 +449,22 @@ body {
         height: 180px;
     }
 
+    .envelope-back::before {
+        border-top: 90px solid transparent;
+        border-bottom: 90px solid transparent;
+        border-left: 170px solid #fffafd;
+    }
+
+    .envelope-back::after {
+        border-top: 90px solid transparent;
+        border-bottom: 90px solid transparent;
+        border-right: 170px solid #fff5f8;
+    }
+
+    .envelope-back-pocket {
+        height: 110px;
+    }
+
     .flap {
         height: 120px;
     }
@@ -546,9 +481,10 @@ body {
     }
 
     .wax {
-        width: 58px;
-        height: 58px;
-        font-size: 22px;
+        width: 54px;
+        height: 54px;
+        font-size: 20px;
+        top: 98px;
     }
 
     .hint {
@@ -576,15 +512,9 @@ body {
     #signature span {
         font-size: 42px;
     }
-
 }
 
-/*====================================
-        LARGE PHONES
-=====================================*/
-
 @media (max-width:430px) {
-
     .envelope {
         width: 300px;
         height: 205px;
@@ -592,6 +522,22 @@ body {
 
     .envelope-back {
         height: 160px;
+    }
+
+    .envelope-back::before {
+        border-top: 80px solid transparent;
+        border-bottom: 80px solid transparent;
+        border-left: 150px solid #fffafd;
+    }
+
+    .envelope-back::after {
+        border-top: 80px solid transparent;
+        border-bottom: 80px solid transparent;
+        border-right: 150px solid #fff5f8;
+    }
+
+    .envelope-back-pocket {
+        height: 100px;
     }
 
     .flap {
@@ -606,6 +552,10 @@ body {
 
     .letter-preview::before {
         width: 200px;
+    }
+
+    .wax {
+        top: 85px;
     }
 
     .paper {
@@ -634,15 +584,9 @@ body {
         max-width: 260px;
         font-size: 18px;
     }
-
 }
 
-/*====================================
-        IPHONE / PIXEL
-=====================================*/
-
 @media (max-width:390px) {
-
     .container {
         padding: 35px 10px;
     }
@@ -671,15 +615,9 @@ body {
     #signature span {
         font-size: 36px;
     }
-
 }
 
-/*====================================
-        ANDROID
-=====================================*/
-
 @media (max-width:360px) {
-
     .envelope {
         transform: scale(.82);
     }
@@ -715,15 +653,9 @@ body {
         padding: 14px 20px;
         font-size: 17px;
     }
-
 }
 
-/*====================================
-        SMALL PHONES
-=====================================*/
-
 @media (max-width:320px) {
-
     .envelope {
         transform: scale(.72);
     }
@@ -759,5 +691,4 @@ body {
         padding: 12px 18px;
         font-size: 16px;
     }
-
 }
