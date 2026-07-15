@@ -31,6 +31,17 @@ wax.addEventListener("click", () => {
     wax.style.opacity = "0";
 
     flap.style.transform = "rotateX(180deg)";
+    setTimeout(() => {
+
+        flap.style.transition = "transform .8s ease, opacity .8s ease";
+
+        flap.style.transform = "translateY(-120px) rotateX(180deg)";
+
+        flap.style.opacity = "0";
+
+        flap.style.pointerEvents = "none";
+
+    }, 700);
 
     preview.style.bottom = "110px";
 
@@ -39,16 +50,14 @@ wax.addEventListener("click", () => {
 });
 
 // ===============================
-// DRAG LETTER
+// DRAG LETTER (Desktop + Mobile)
 // ===============================
 
 let dragging = false;
-
 let startY = 0;
-
 let distance = 0;
 
-preview.addEventListener("mousedown", e => {
+preview.addEventListener("pointerdown", (e) => {
 
     if (!unlocked) return;
 
@@ -56,9 +65,11 @@ preview.addEventListener("mousedown", e => {
 
     startY = e.clientY;
 
+    preview.setPointerCapture(e.pointerId);
+
 });
 
-document.addEventListener("mousemove", e => {
+preview.addEventListener("pointermove", (e) => {
 
     if (!dragging) return;
 
@@ -68,12 +79,11 @@ document.addEventListener("mousemove", e => {
 
     if (distance > 320) distance = 320;
 
-    preview.style.transform =
-        `translateY(${-distance}px)`;
+    preview.style.transform = `translateY(${-distance}px)`;
 
 });
 
-document.addEventListener("mouseup", () => {
+preview.addEventListener("pointerup", () => {
 
     if (!dragging) return;
 
@@ -83,12 +93,9 @@ document.addEventListener("mouseup", () => {
 
         openDiary();
 
-    }
+    } else {
 
-    else {
-
-        preview.style.transform =
-            "translateY(0)";
+        preview.style.transform = "translateY(0)";
 
     }
 
