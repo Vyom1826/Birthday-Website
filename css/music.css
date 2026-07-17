@@ -422,13 +422,15 @@ h1 {
 
     height: 7px;
 
-    background:
-
-        rgba(255, 255, 255, .15);
+    background: rgba(255, 255, 255, .15);
 
     border-radius: 20px;
 
     overflow: hidden;
+
+    cursor: pointer;
+
+    position: relative;
 
 }
 
@@ -438,13 +440,45 @@ h1 {
 
     height: 100%;
 
-    background:
+    background: linear-gradient(to right, #ff3b82, #ffd86a);
 
-        linear-gradient(to right,
+    position: relative;
 
-            #ff3b82,
+    transition: width .1s linear;
 
-            #ffd86a);
+}
+
+#progress::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -8px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 16px;
+
+    height: 16px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow: 0 0 10px rgba(255, 255, 255, .8);
+
+    opacity: 0;
+
+    transition: .2s;
+
+}
+
+#progressBar:hover #progress::after {
+
+    opacity: 1;
 
 }
 

@@ -181,6 +181,52 @@ function format(sec) {
 
 }
 
+/*=========================================
+        SEEK BAR
+=========================================*/
+
+let isDragging = false;
+
+function seek(e) {
+
+    const rect = progressBar.getBoundingClientRect();
+
+    let x = e.clientX - rect.left;
+
+    x = Math.max(0, Math.min(x, rect.width));
+
+    const percent = x / rect.width;
+
+    progress.style.width = (percent * 100) + "%";
+
+    audio.currentTime = percent * audio.duration;
+
+}
+
+progressBar.addEventListener("click", seek);
+
+progressBar.addEventListener("pointerdown", (e) => {
+
+    isDragging = true;
+
+    seek(e);
+
+});
+
+document.addEventListener("pointermove", (e) => {
+
+    if (!isDragging) return;
+
+    seek(e);
+
+});
+
+document.addEventListener("pointerup", () => {
+
+    isDragging = false;
+
+});
+
 /*====================================================
                 EQUALIZER
 ====================================================*/
